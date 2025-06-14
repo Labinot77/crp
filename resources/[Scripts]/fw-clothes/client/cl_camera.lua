@@ -1,10 +1,13 @@
-local Camera, CamHeading, CurrentCamStage, IsSwitchingStage = nil, nil, 2, false
+local Camera, CameraActive CamHeading, CurrentCamStage, IsSwitchingStage = nil, nil, nil, 2, false
 
 function CreateClothingCamera(Bool, WithBlur, ForceStage)
     exports['fw-inventory']:SetBusyState(Bool)
     TriggerEvent('fw-assets:Client:Toggle:Items', Bool)
 
     if Bool then
+        -- Changed 
+        CameraActive = true
+
         local CamRot = GetGameplayCamRot(2)
         SetEntityHeading(PlayerPedId(), CamRot[3] + 180.0)
 
@@ -28,13 +31,23 @@ function CreateClothingCamera(Bool, WithBlur, ForceStage)
 
         CameraController()
     else
+        -- Changed
+        CameraActive = false
+
         RenderScriptCams(false, false, 500, false, false)
-        DestroyCam(Camera, true)
+        -- DestroyCam(Camera, true)
 
         SetGameplayCamRelativeHeading(0)
         SetGameplayCamRelativePitch(0, 1)
 
-        Camera = nil
+        -- Reset the camera settings
+        if Camera then
+            SetCamActive(Camera, false)
+            DestroyCam(Camera, true)
+            Camera = nil
+        end
+        
+        ClearFocus()
         StopAnimTask(PlayerPedId(), 'mp_sleep', 'bind_pose_180', 3.0)
         SetFocusEntity(PlayerPedId())
     end
@@ -86,48 +99,50 @@ end
 
 function CameraController()
     local IsMouseInField = false
-    while DoesCamExist(Camera) do
-        local CursorX, CursorY = GetNuiCursorPosition()
+    Citizen.CreateThread(function()
+        while CameraActive and Camera and DoesCamExist(Camera) do
+            local CursorX, CursorY = GetNuiCursorPosition()
 
-        -- Disable the controls.
-        DisableAllControlActions(0)
-        DisableAllControlActions(1)
-        DisableAllControlActions(2)
+            -- Disable the controls.
+            DisableAllControlActions(0)
+            DisableAllControlActions(1)
+            DisableAllControlActions(2)
 
-        EnableControlAction(0, 249, true) -- PUSH_TO_TALK
+            EnableControlAction(0, 249, true) -- PUSH_TO_TALK
 
-        -- Camera Rotation
-        local ScreenX, ScreenY = GetActiveScreenResolution()
-        if CursorX < (ScreenX * 0.72) then
-            if IsDisabledControlJustPressed(0, 24) or IsDisabledControlJustPressed(0, 25) then
-                IsMouseInField = true
-            end
-
-            if IsMouseInField then
-                -- Ped
-                local Direction = GetDisabledControlNormal(0, 220)
-                if IsDisabledControlPressed(0, 24) then
-                    SetEntityHeading(PlayerPedId(), GetEntityHeading(PlayerPedId()) + (Direction * ScreenX * 0.0125))
+            -- Camera Rotation
+            local ScreenX, ScreenY = GetActiveScreenResolution()
+            if CursorX < (ScreenX * 0.72) then
+                if IsDisabledControlJustPressed(0, 24) or IsDisabledControlJustPressed(0, 25) then
+                    IsMouseInField = true
                 end
 
-                -- Camera
-                if IsDisabledControlPressed(0, 25) then
-                    SetCameraParams(PlayerPedId(), Camera, Direction * ScreenX * 0.0125)
+                if IsMouseInField then
+                    -- Ped
+                    local Direction = GetDisabledControlNormal(0, 220)
+                    if IsDisabledControlPressed(0, 24) then
+                        SetEntityHeading(PlayerPedId(), GetEntityHeading(PlayerPedId()) + (Direction * ScreenX * 0.0125))
+                    end
+
+                    -- Camera
+                    if IsDisabledControlPressed(0, 25) then
+                        SetCameraParams(PlayerPedId(), Camera, Direction * ScreenX * 0.0125)
+                    end
                 end
+
+                -- Camera Position
+                if IsDisabledControlPressed(0, 16) then
+                    UpdateCameraPosition(PlayerPedId(), true)
+                end
+
+                if IsDisabledControlPressed(0, 17) then
+                    UpdateCameraPosition(PlayerPedId(), false)
+                end
+            elseif IsMouseInField then
+                IsMouseInField = false
             end
 
-            -- Camera Position
-            if IsDisabledControlPressed(0, 16) then
-                UpdateCameraPosition(PlayerPedId(), true)
-            end
-
-            if IsDisabledControlPressed(0, 17) then
-                UpdateCameraPosition(PlayerPedId(), false)
-            end
-        elseif IsMouseInField then
-            IsMouseInField = false
+            Citizen.Wait(0)
         end
-
-        Citizen.Wait(0)
-    end
+    end)
 end

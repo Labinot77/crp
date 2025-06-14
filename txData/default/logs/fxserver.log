@@ -1,9 +1,12 @@
 ================================================================
-======== Log Rotated - 3/2/2025, 7:07:27 PM                     
+======== Log Rotated - 6/15/2025, 12:00:00 AM                   
 ================================================================
-[             TXADMIN] ================================================================ 
-[             TXADMIN] ======== [8848] FXServer Starting - 3/2/2025, 7:07:28 PM         
-[             TXADMIN] ================================================================ 
+║             TXADMIN║ txaEvent "serverShuttingDown" "{\"delay\":5000,\"author\":\"SkyFrost\",\"message\":\"Server restarting (admin request).\"}"
+[      script:monitor] [txAdmin] Server shutting down. Kicking all players.
+
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [2328] FXServer Starting - 6/15/2025, 12:03:41 AM      
+║             TXADMIN║ ================================================================
 [           resources] Scanning resources.
 [      resources:chat] Warning: chat has an outdated manifest (__resource.lua instead of fxmanifest.lua)
 [resources:sessionman] Warning: sessionmanager has an outdated manifest (__resource.lua instead of fxmanifest.lua)
@@ -11,14 +14,14 @@
 [           resources] 2 warnings were encountered.
 [          svadhesive] Authenticating server license key...
 [          svadhesive] Server license key authentication succeeded. Welcome!
-[    c-scripting-core] Creating script environments for sessionmanager
-[           resources] Started resource sessionmanager
 [    c-scripting-core] Creating script environments for monitor
-[      script:monitor] [txAdmin] Resource v7.3.2 threads and commands set up. All Ready.
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
 [           resources] Started resource monitor
 [    c-scripting-core] Creating script environments for mapmanager
 [           resources] Started resource mapmanager
 [           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
 [   script:mapmanager] Started gametype Freeroam
 [           resources] Started resource basic-gamemode
 [           resources] Started resource fivem
@@ -34,8 +37,7 @@
 [    c-scripting-core] Creating script environments for webpack
 [           resources] Started resource webpack
 [    c-scripting-core] Creating script environments for screenshot-basic
-[resources:screenshot] Warning: could not find file `dist/ui.html` (defined in fxmanifest.lua:14)
-[           resources] Started resource screenshot-basic (1 warning)
+[           resources] Started resource screenshot-basic
 [ citizen-server-impl] Couldn't find resource connectqueue.
 [    c-scripting-core] Creating script environments for chat
 [           resources] Started resource chat
@@ -329,7 +331,7 @@
 [ citizen-server-impl] Couldn't find resource fw-dutyvehicles.
 [                 cmd] Argument count mismatch (passed 1, wanted 2)
 [ citizen-server-main] Warning: The players.json endpoint has been modified to no longer return the player identifiers without authentication.
-[ citizen-server-main] To learn more about this change read our announcement at https://forum.cfx.re/t/celebrating-one-year-with-rockstar-games/5269938#fivem-and-redm-6
+[ citizen-server-main] To learn more about this change read our announcement at https://aka.cfx.re/players-json-privacy
 [      script:fw-core] [FW] Event Guard Added: fw-boosting:Server:AddHackProgress
 [      script:fw-core] [FW] Event Guard Added: fw-boosting:Server:ScratchVin
 [  script:fw-boosting] [Boosting]: Queue Initiated.
@@ -349,385 +351,26 @@
 [      script:fw-core] [FW] Event Guard Added: fw-arcade:Server:SaveLobbySettings
 [      script:fw-core] [FW] Event Guard Added: fw-arcade:Server:EndGame
 [      script:fw-core] [FW] Event Guard Added: fw-arcade:Server:RepairArcadeMachine
-[      script:fw-core] Security Token Generated: ne9bwpa&I1lT#q4EZbfAt6ZKA1CH0W$w
-[      script:fw-core] Disabling double steamid check!
-[      script:oxmysql] Error: Unable to establish a connection to the database!
-[      script:oxmysql] [Error: connect ECONNREFUSED 127.0.0.1:3306]
-[      script:oxmysql] An update is available for oxmysql (current version: 2.7.2)
-[      script:oxmysql] https://github.com/overextended/oxmysql/releases/tag/v2.13.0
-[ citizen-server-impl]         fff                          
-[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
-[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
-[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
-[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
-[ citizen-server-impl]                                      
-[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://skyfrost-6lggx4.users.cfx.re/
-[             TXADMIN] ================================================================ 
-[             TXADMIN] ======== [14276] FXServer Starting - 3/2/2025, 7:09:21 PM        
-[             TXADMIN] ================================================================ 
-[           resources] Scanning resources.
-[      resources:chat] Warning: chat has an outdated manifest (__resource.lua instead of fxmanifest.lua)
-[resources:sessionman] Warning: sessionmanager has an outdated manifest (__resource.lua instead of fxmanifest.lua)
-[           resources] Found 97 resources.
-[           resources] 2 warnings were encountered.
-[          svadhesive] Authenticating server license key...
-[          svadhesive] Server license key authentication succeeded. Welcome!
-[    c-scripting-core] Creating script environments for sessionmanager
-[           resources] Started resource sessionmanager
-[    c-scripting-core] Creating script environments for monitor
-[      script:monitor] [txAdmin] Resource v7.3.2 threads and commands set up. All Ready.
-[           resources] Started resource monitor
-[    c-scripting-core] Creating script environments for mapmanager
-[           resources] Started resource mapmanager
-[           resources] Started resource spawnmanager
-[   script:mapmanager] Started gametype Freeroam
-[           resources] Started resource basic-gamemode
-[           resources] Started resource fivem
-[    c-scripting-core] Creating script environments for baseevents
-[           resources] Started resource baseevents
-[    c-scripting-core] Creating script environments for oxmysql
-[           resources] Started resource oxmysql
-[    c-scripting-core] Creating script environments for fw-core
-[      script:fw-core] [FW] Event Guard Added: FW:AddItem
-[           resources] Started resource fw-core
-[    c-scripting-core] Creating script environments for yarn
-[           resources] Started resource yarn
-[    c-scripting-core] Creating script environments for webpack
-[           resources] Started resource webpack
-[    c-scripting-core] Creating script environments for screenshot-basic
-[resources:screenshot] Warning: could not find file `dist/ui.html` (defined in fxmanifest.lua:14)
-[           resources] Started resource screenshot-basic (1 warning)
-[ citizen-server-impl] Couldn't find resource connectqueue.
-[    c-scripting-core] Creating script environments for chat
-[           resources] Started resource chat
-[    c-scripting-core] Creating script environments for PolyZone
-[           resources] Started resource PolyZone
-[    c-scripting-core] Creating script environments for fw-config
-[    script:fw-config] [CONFIG]: Failed to load module "cortainer-rentals", either unaccesible files or empty configuration!
-[    script:fw-config] [CONFIG]: Loaded 16/17 modules loaded!
-[           resources] Started resource fw-config
-[    c-scripting-core] Creating script environments for fw-voice
-[           resources] Started resource fw-voice
-[    c-scripting-core] Creating script environments for fw-queue
-[           resources] Started resource fw-queue
-[    c-scripting-core] Creating script environments for fw-businesses
-[      script:fw-core] [FW] Event Guard Added: fw-businesses:Server:QuicksellVehicle
-[      script:fw-core] [FW] Event Guard Added: fw-businesses:Server:Electronics:AddMusicEntry
-[      script:fw-core] [FW] Event Guard Added: fw-businesses:Server:Electronics:CreateCassetteTapes
-[      script:fw-core] [FW] Event Guard Added: fw-businesses:Server:Foodchain:SetPaymentData
-[      script:fw-core] [FW] Event Guard Added: fw-businesses:Server:Foodchain:FinishMeal
-[      script:fw-core] [FW] Event Guard Added: fw-businesses:Server:Foodchain:CreateItem
-[           resources] Started resource fw-businesses
-[           resources] Started resource fw-cleanup
-[    c-scripting-core] Creating script environments for fw-admin
-[           resources] Started resource fw-admin
-[    c-scripting-core] Creating script environments for fw-inventory
-[      script:fw-core] [FW] Event Guard Added: fw-inventory:Server:OpenInventory
-[      script:fw-core] [FW] Event Guard Added: fw-inventory:Server:DoItemMovement
-[      script:fw-core] [FW] Event Guard Added: fw-inventory:Server:UpdateInventory
-[      script:fw-core] [FW] Event Guard Added: fw-inventory:Server:UseItem
-[      script:fw-core] [FW] Event Guard Added: fw-inventory:Server:StealMoney
-[           resources] Started resource fw-inventory
-[    c-scripting-core] Creating script environments for fw-characters
-[      script:fw-core] [FW] Event Guard Added: fw-characters:Server:DeleteCharacter
-[      script:fw-core] [FW] Event Guard Added: fw-characters:Server:PlayCharacter
-[           resources] Started resource fw-characters
-[    c-scripting-core] Creating script environments for fw-emotes
-[      script:fw-core] [FW] Event Guard Added: fw-emotes:Server:SendRequest
-[      script:fw-core] [FW] Event Guard Added: fw-emotes:Server:RespondToRequest
-[           resources] Started resource fw-emotes
-[    c-scripting-core] Creating script environments for fw-apartments
-[           resources] Started resource fw-apartments
-[    c-scripting-core] Creating script environments for fw-assets
-[           resources] Started resource fw-assets
-[    c-scripting-core] Creating script environments for fw-financials
-[           resources] Started resource fw-financials
-[           resources] Started resource fw-carmenu
-[    c-scripting-core] Creating script environments for fw-cityhall
-[      script:fw-core] [FW] Event Guard Added: fw-cityhall:Server:SendAnnouncement
-[      script:fw-core] [FW] Event Guard Added: fw-cityhall:Server:RequestBankaccount
-[      script:fw-core] [FW] Event Guard Added: fw-cityhall:Server:CreateBallot
-[      script:fw-core] [FW] Event Guard Added: fw-cityhall:Server:SaveBallotVote
-[      script:fw-core] [FW] Event Guard Added: fw-cityhall:Server:SetLockdownState
-[      script:fw-core] [FW] Event Guard Added: fw-cityhall:Server:SetTax
-[           resources] Started resource fw-cityhall
-[    c-scripting-core] Creating script environments for fw-clothes
-[      script:fw-core] [FW] Event Guard Added: fw-clothes:Server:SetOutfit
-[      script:fw-core] [FW] Event Guard Added: fw-clothes:Server:SavePlayerOutfit
-[      script:fw-core] [FW] Event Guard Added: fw-clothes:Server:RemoveFacewear
-[      script:fw-core] [FW] Event Guard Added: fw-clothes:Server:ReceiveFacewearItem
-[           resources] Started resource fw-clothes
-[    c-scripting-core] Creating script environments for fw-bennys
-[           resources] Started resource fw-bennys
-[    c-scripting-core] Creating script environments for fw-doors
-[           resources] Started resource fw-doors
-[    c-scripting-core] Creating script environments for fw-heists
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:RemoveTrackerFromLoot
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:CreateRope
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:AttachRopeToATM
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:DetachATM
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:PickupATM
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:SetATMSearched
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:SearchATM
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:ATMReward
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Banktruck:SetTruckState
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Banktruck:ReceiveGoods
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Baycity:Reset
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Bobcat:Reset
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Bobcat:Loot
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Fleeca:Reset
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Fleeca:GetLoot
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Fleeca:LeftArea
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Jewelry:Reset
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Jewelry:LeftArea
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Jewelry:Reward
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Store:SetSafeState
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Trolley:PayoutGrab
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Vault:Reset
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Vault:LeftArea
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Vault:OfficeSafeReward
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:SuccessGateHack
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Vault:SetBoxCoords
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Vault:GetLoot
-[      script:fw-core] [FW] Event Guard Added: fw-heists:Server:Vault:StartLasers
-[           resources] Started resource fw-heists
-[    c-scripting-core] Creating script environments for fw-medical
-[      script:fw-core] [FW] Event Guard Added: fw-medical:Server:HealPlayer
-[      script:fw-core] [FW] Event Guard Added: fw-medical:Server:RevivePlayer
-[      script:fw-core] [FW] Event Guard Added: fw-medical:Server:TakeBlood
-[      script:fw-core] [FW] Event Guard Added: fw-medical:Server:SwabDNA
-[      script:fw-core] [FW] Event Guard Added: fw-medical:Server:SaveHealth
-[      script:fw-core] [FW] Event Guard Added: fw-medical:Server:PayMedicalFee
-[      script:fw-core] [FW] Event Guard Added: fw-medical:Server:ClearInventory
-[           resources] Started resource fw-medical
-[    c-scripting-core] Creating script environments for fw-housing
-[           resources] Started resource fw-housing
-[    c-scripting-core] Creating script environments for fw-misc
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:GetTea
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:PurchaseWeaponBody
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:ExploiterAlert
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:PluckBananas
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:CreateSandstone
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:AFKKick
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:PlaceBeehive
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:AddQueenToHive
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:DestroyHive
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:HarvestHive
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:SaveContainerMeta
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:CornerMoney
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:SyncCornerSale
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:Farming:PlacePlant
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:Farming:RentGarden
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:MetalDetectorReward
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:WriteNotepad
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:RecycleReward
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:SetStrandedContainerState
-[      script:fw-core] [FW] Event Guard Added: fw-misc:Server:GiveContainerLoot
-[           resources] Started resource fw-misc
-[resources:fw-interio] Warning: could not find file `stream/*/*.ytyp` (defined in fxmanifest.lua:9)
-[resources:fw-interio] Asset fw-interiors/frankelientje.ydr uses 27.2 MiB of physical memory.
-[resources:fw-interio] Asset fw-interiors/micheal_shell.ydr uses 30.5 MiB of physical memory.
-[           resources] Started resource fw-interiors (3 warnings)
-[    c-scripting-core] Creating script environments for fw-items
-[      script:fw-core] [FW] Event Guard Added: fw-items:Server:Receive:Scuba
-[           resources] Started resource fw-items
-[    c-scripting-core] Creating script environments for fw-jobmanager
-[      script:fw-core] [FW] Event Guard Added: fw-jobmanager:Server:ReceiveChopReward
-[      script:fw-core] [FW] Event Guard Added: fw-jobmanager:Server:SetConstrucionObjective
-[      script:fw-core] [FW] Event Guard Added: fw-jobmanager:Server:Fishing:GetFishReward
-[      script:fw-core] [FW] Event Guard Added: fw-jobmanager:Server:Houses:ReceiveObject
-[      script:fw-core] [FW] Event Guard Added: fw-jobmanager:Server:Houses:ReceiveGoods
-[      script:fw-core] [FW] Event Guard Added: fw-jobmanager:Server:ConcealHouse
-[      script:fw-core] [FW] Event Guard Added: fw-jobmanager:Server:Impound:ReturnFlatbed
-[      script:fw-core] [FW] Event Guard Added: fw-jobmanager:Server:Taxi:DeletePed
-[      script:fw-core] [FW] Event Guard Added: fw-jobmanager:Server:AddTaskProgress
-[           resources] Started resource fw-jobmanager
-[    c-scripting-core] Creating script environments for fw-phone
-[      script:fw-core] [FW] Event Guard Added: fw-phone:Server:DOJ:SetStatus
-[           resources] Started resource fw-phone
-[    c-scripting-core] Creating script environments for fw-police
-[      script:fw-core] [FW] Event Guard Added: fw-police:Server:CuffPlayer
-[      script:fw-core] [FW] Event Guard Added: fw-police:Server:SeatVehicle
-[      script:fw-core] [FW] Event Guard Added: fw-police:Server:EscortPlayer
-[      script:fw-core] [FW] Event Guard Added: fw-police:Server:RemoveFaceWear
-[      script:fw-core] [FW] Event Guard Added: fw-police:Server:DehashSerial
-[      script:fw-core] [FW] Event Guard Added: fw-police:Server:FlagPlate
-[      script:fw-core] [FW] Event Guard Added: fw-police:Server:PlaceSpikestrip
-[      script:fw-core] [FW] Event Guard Added: fw-police:Server:HireEmployee
-[      script:fw-core] [FW] Event Guard Added: fw-police:Server:GrabTimeTrialsUsb
-[      script:fw-core] [FW] Event Guard Added: fw-police:Server:Receive:Evidence
-[      script:fw-core] [FW] Event Guard Added: fw-police:Server:PlaceBarricade
-[      script:fw-core] [FW] Event Guard Added: fw-police:Server:DeleteBarricade
-[           resources] Started resource fw-police
-[           resources] Started resource fw-progressbar
-[    c-scripting-core] Creating script environments for fw-menu
-[           resources] Started resource fw-menu
-[    c-scripting-core] Creating script environments for fw-radio
-[           resources] Started resource fw-radio
-[ citizen-server-impl] Couldn't find resource fw-spawn.
-[ citizen-server-impl] Couldn't find resource fw-trains.
-[    c-scripting-core] Creating script environments for fw-hud
-[      script:fw-core] [FW] Event Guard Added: fw-hud:Server:ApplyBuff
-[      script:fw-core] [FW] Event Guard Added: fw-hud:Server:RemoveBuff
-[           resources] Started resource fw-hud
-[           resources] Started resource fw-minigames
-[    c-scripting-core] Creating script environments for fw-ui
-[           resources] Started resource fw-ui
-[    c-scripting-core] Creating script environments for fw-vehicles
-[      script:fw-core] [FW] Event Guard Added: fw-vehicles:Server:SetVehicleTampering
-[           resources] Started resource fw-vehicles
-[    c-scripting-core] Creating script environments for fw-weapons
-[           resources] Started resource fw-weapons
-[    c-scripting-core] Creating script environments for fw-sync
-[           resources] Started resource fw-sync
-[    c-scripting-core] Creating script environments for fw-scenes
-[           resources] Started resource fw-scenes
-[ citizen-server-impl] Couldn't find resource fw-editor.
-[    c-scripting-core] Creating script environments for fw-mdw
-[           resources] Started resource fw-mdw
-[    c-scripting-core] Creating script environments for fw-illegal
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:FailedCocaine
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:CreateCokeDinghy
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:DeleteCokeVehicles
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:BagCocaine
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:LoadCrackpipe
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:SetCrackpipeUses
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:PlaceMethTable
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:DestroyMethTable
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:RewardMethTable
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:CutMethReward
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:LoadMethpipe
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:ResetMethrun
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:RobTraphouseCode
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:RobNPC
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:TakeoverTraphouse
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:TakeTraphouseCash
-[      script:fw-core] [FW] Event Guard Added: fw-illegal:Server:ChangeTraphouseCode
-[           resources] Started resource fw-illegal
-[ citizen-server-impl] Couldn't find resource fw-casino.
-[           resources] Started resource assets-sprays
-[    c-scripting-core] Creating script environments for fw-graffiti
-[      script:fw-core] [FW] Event Guard Added: fw-graffiti:Server:CreateSpray
-[      script:fw-core] [FW] Event Guard Added: fw-graffiti:Server:DestroySpray
-[      script:fw-core] [FW] Event Guard Added: fw-graffiti:Server:AlertSprayer
-[           resources] Started resource fw-graffiti
-[    c-scripting-core] Creating script environments for fw-laptop
-[      script:fw-core] [FW] Event Guard Added: fw-laptop:Server:Market:SellItem
-[ resources:fw-laptop] Warning: could not find shared_script `locale.lua` (defined in fxmanifest.lua:13)
-[           resources] Started resource fw-laptop (1 warning)
-[    c-scripting-core] Creating script environments for fw-island
-[           resources] Started resource fw-island
-[    c-scripting-core] Creating script environments for fw-racing
-[      script:fw-core] [FW] Event Guard Added: fw-racing:Server:UpdatePosition
-[      script:fw-core] [FW] Event Guard Added: fw-racing:Server:Finished
-[      script:fw-core] [FW] Event Guard Added: fw-racing:Server:SendRacingMessage
-[           resources] Started resource fw-racing
-[    c-scripting-core] Creating script environments for fw-polaroid
-[      script:fw-core] [FW] Event Guard Added: fw-polaroid:Server:RechargeCamera
-[      script:fw-core] [FW] Event Guard Added: fw-polaroid:Server:ReceivePhoto
-[      script:fw-core] [FW] Event Guard Added: fw-polaroid:Server:AddIntoPhotobook
-[      script:fw-core] [FW] Event Guard Added: fw-polaroid:Server:ShareNearby
-[           resources] Started resource fw-polaroid
-[    c-scripting-core] Creating script environments for fw-boosting
-[  script:fw-boosting] Thread created, id: 1
-[  script:fw-boosting] Thread created, id: 2
-[  script:fw-boosting] Thread created, id: 3
-[           resources] Started resource fw-boosting
-[    c-scripting-core] Creating script environments for fw-books
-[           resources] Started resource fw-books
-[    c-scripting-core] Creating script environments for fw-prison
-[      script:fw-core] [FW] Event Guard Added: fw-prison:Server:SetAlarmState
-[           resources] Started resource fw-prison
-[    c-scripting-core] Creating script environments for fw-arcade
-[           resources] Started resource fw-arcade
-[    c-scripting-core] Creating script environments for wk_wrs
-[           resources] Started resource wk_wrs
-[           resources] Started resource minigame-boostinghack
-[           resources] Started resource minigame-drill
-[           resources] Started resource minigame-phone
-[           resources] Started resource minigame-datacrack
-[           resources] Started resource minigame-safecrack
-[           resources] Started resource minigame-shape
-[    c-scripting-core] Creating script environments for meta_libs
-[ resources:meta_libs] Warning: could not find client_script `client/scripts/VehicleProperties.lua` (defined in fxmanifest.lua:6)
-[           resources] Started resource meta_libs (1 warning)
-[ citizen-server-impl] Couldn't find resource cfx_gn_ambulance_garage.
-[ citizen-server-impl] Couldn't find resource cfx_gn_collection.
-[ citizen-server-impl] Couldn't find resource cfx_gn_int_clinic.
-[ citizen-server-impl] Couldn't find resource cfx_gn_clinic_paleto.
-[ citizen-server-impl] Couldn't find resource cfx_gn_clinic_sandy.
-[ citizen-server-impl] Couldn't find resource cfx_gn_sandy_mapdata.
-[ citizen-server-impl] Couldn't find resource cfx_gn_medic_center.
-[ citizen-server-impl] Couldn't find resource cfx_gn_medical_assets.
-[ citizen-server-impl] Couldn't find resource cfx_gn_medical_accessories.
-[ citizen-server-impl] Couldn't find resource map-bobcat.
-[ citizen-server-impl] Couldn't find resource map-tavern.
-[ citizen-server-impl] Couldn't find resource map-digital.
-[ citizen-server-impl] Couldn't find resource map-hunting.
-[resources:fw-maps:st] Asset fw-maps/ch_chint04_dlc_tunnel.ytd uses 17.0 MiB of physical memory.
-[resources:fw-maps:st] Asset fw-maps/ch_chint07_dlc_casino_hotel.ytd uses 30.0 MiB of physical memory.
-[resources:fw-maps:st] Asset fw-maps/np_ch_chint06_boh_shell.ydr uses 17.0 MiB of physical memory.
-[resources:fw-maps:st] Asset fw-maps/sp_01_station.ytd uses 20.0 MiB of physical memory.
-[           resources] Started resource fw-maps (4 warnings)
-[resources:map-burger] Asset map-burgershot/bs_int_txd.ytd uses 18.8 MiB of physical memory.
-[           resources] Started resource map-burgershot (1 warning)
-[           resources] Started resource map-hub
-[           resources] Started resource map-hayes
-[ citizen-server-impl] Couldn't find resource assets-clothing.
-[resources:assets-wea] Warning: could not find file `**/ptfxassetinfo.meta` (defined in fxmanifest.lua:4)
-[resources:assets-wea] Asset assets-weapons/w_pi_heavypistol+hi.ytd uses 26.0 MiB of physical memory.
-[resources:assets-wea] Asset assets-weapons/w_pi_heavypistol.ytd uses 26.0 MiB of physical memory.
-[resources:assets-wea] Asset assets-weapons/w_pi_heavypistol_luxe+hi.ytd uses 26.0 MiB of physical memory.
-[resources:assets-wea] Asset assets-weapons/w_pi_heavypistol_luxe.ytd uses 26.0 MiB of physical memory.
-[resources:assets-wea] Asset assets-weapons/w_sg_rubberslug+hi.ytd uses 40.0 MiB of physical memory.
-[resources:assets-wea] Asset assets-weapons/w_sg_rubberslug.ytd uses 40.0 MiB of physical memory.
-[           resources] Started resource assets-weapons (7 warnings)
-[           resources] Started resource assets-audio
-[resources:assets-far] Asset assets-farming/np_farming_txd.ytd uses 16.8 MiB of physical memory.
-[           resources] Started resource assets-farming (1 warning)
-[           resources] Started resource assets-replace
-[           resources] Started resource assets-occlusion
-[ citizen-server-impl] Couldn't find resource fw-dutyvehicles.
-[                 cmd] Argument count mismatch (passed 1, wanted 2)
-[ citizen-server-main] Warning: The players.json endpoint has been modified to no longer return the player identifiers without authentication.
-[ citizen-server-main] To learn more about this change read our announcement at https://forum.cfx.re/t/celebrating-one-year-with-rockstar-games/5269938#fivem-and-redm-6
-[      script:fw-core] [FW] Event Guard Added: fw-boosting:Server:AddHackProgress
-[      script:fw-core] [FW] Event Guard Added: fw-boosting:Server:ScratchVin
-[  script:fw-boosting] [Boosting]: Queue Initiated.
-[    script:fw-prison] [PRISON]: Jail Timer started!
-[    script:fw-prison] [PRISON]: Parole Timer started!
-[      script:fw-core] [FW] Event Guard Added: fw-prison:Server:ResetJailTime
-[      script:fw-core] [FW] Event Guard Added: fw-prison:Server:ReduceJailTime
-[      script:fw-core] [FW] Event Guard Added: fw-prison:Server:ReceiveJailItem
-[      script:fw-core] [FW] Event Guard Added: fw-prison:Server:SetCurrentTask
-[      script:fw-core] [FW] Event Guard Added: fw-prison:Server:SetLastUsed
-[      script:fw-core] [FW] Event Guard Added: fw-prison:Server:TaskReward
-[      script:fw-core] [FW] Event Guard Added: fw-arcade:Server:VTag:RouletteTag
-[      script:fw-core] [FW] Event Guard Added: fw-arcade:Server:CreateLobby
-[      script:fw-core] [FW] Event Guard Added: fw-arcade:Server:JoinLobby
-[      script:fw-core] [FW] Event Guard Added: fw-arcade:Server:JoinSpectator
-[      script:fw-core] [FW] Event Guard Added: fw-arcade:Server:SendInvitation
-[      script:fw-core] [FW] Event Guard Added: fw-arcade:Server:SaveLobbySettings
-[      script:fw-core] [FW] Event Guard Added: fw-arcade:Server:EndGame
-[      script:fw-core] [FW] Event Guard Added: fw-arcade:Server:RepairArcadeMachine
-[      script:fw-core] Security Token Generated: ne9bwpa&I1lT#q4EZbfAt6ZKA1CH0W$w
+[      script:fw-core] Security Token Generated: SWgHBX5&pTd$!V0WNhfbt0ET20h5xK9s
 [      script:fw-core] Disabling double steamid check!
 [      script:oxmysql] Database server connection established!
 [script:fw-businesses] [FOODCHAIN] Loaded a total of 153 dishes.
-[      script:fw-core] Tax [Property Tax] set to 5%
+[     script:fw-queue] Queue limited to 164 players!
+[      script:fw-core] Tax [Goods] set to 8%
 [      script:fw-core] Tax [Gas] set to 12%
 [      script:fw-core] Tax [Clothes] set to 10%
-[      script:fw-core] Tax [Goods] set to 8%
 [      script:fw-core] Tax [Vehicle Registration Tax] set to 5%
+[      script:fw-core] Tax [Property Tax] set to 5%
+[      script:fw-core] Tax [Services] set to 8%
 [      script:fw-core] Tax [Vehicle Sales] set to 3%
 [      script:fw-core] Tax [Personal Income] set to 8%
-[      script:fw-core] Tax [Services] set to 8%
-[     script:fw-queue] Queue limited to 164 players!
-[   script:fw-housing] Loaded 0 houses.
 [  script:fw-vehicles] 0 vehicles where re-stated into their garages.
+[      script:fw-misc] Its ouch time - time for maintenance fees :)
+[   script:fw-housing] Loaded 0 houses.
 [    script:fw-laptop] Fetched 1 gangs..
+[      script:fw-misc] 1 debts were added. A total of € 5.500,00!
 [      script:oxmysql] An update is available for oxmysql (current version: 2.7.2)
-[      script:oxmysql] https://github.com/overextended/oxmysql/releases/tag/v2.13.0
+[      script:oxmysql] https://github.com/overextended/oxmysql/releases/tag/v2.12.0
 [ citizen-server-impl]         fff                          
 [ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
 [ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
@@ -736,4 +379,3 @@
 [ citizen-server-impl]                                      
 [ citizen-server-impl] Authenticated with cfx.re Nucleus: https://skyfrost-6lggx4.users.cfx.re/
 [      script:fw-core] [NEUTRAL] [Player]: Player Connecting [Player: dido]
-[ citizen-server-impl] server thread hitch warning: timer interval of 2086 milliseconds

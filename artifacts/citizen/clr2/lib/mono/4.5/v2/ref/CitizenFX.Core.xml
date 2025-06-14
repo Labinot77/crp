@@ -7410,8 +7410,8 @@
             
             At this time, the change handler can't opt to reject changes.
             
-            If bagName refers to an entity, use [GET_ENTITY_FROM_STATE_BAG_NAME](?\_0x4BDF1868) to get the entity handle
-            If bagName refers to a player, use [GET_PLAYER_FROM_STATE_BAG_NAME](?\_0xA56135E0) to get the player handle
+            If bagName refers to an entity, use [GET_ENTITY_FROM_STATE_BAG_NAME](#\_0x4BDF1867) to get the entity handle
+            If bagName refers to a player, use [GET_PLAYER_FROM_STATE_BAG_NAME](#\_0xA56135E0) to get the player handle
             </summary>
             <param name="keyFilter">
             The key to check for, or null for no filter.
@@ -7444,6 +7444,25 @@
             The key to delete
             </param>
         </member>
+        <member name="M:CitizenFX.Shared.Native.Natives.DeleteResourceKvpNoSync(CitizenFX.Core.CString)">
+            <summary>
+            Nonsynchronous [DELETE_RESOURCE_KVP](#\_0x7389B5DF) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
+            </summary>
+            <param name="key">
+            The key to delete
+            </param>
+        </member>
+        <member name="M:CitizenFX.Shared.Native.Natives.DoesTrainStopAtStations(System.Int32)">
+            <summary>
+            DOES_TRAIN_STOP_AT_STATIONS
+            </summary>
+            <param name="train">
+            The train handle
+            </param>
+            <returns>
+            True if the train stops at stations. False otherwise
+            </returns>
+        </member>
         <member name="M:CitizenFX.Shared.Native.Natives.DuplicateFunctionReference(CitizenFX.Core.CString)">
             <summary>
             DUPLICATE_FUNCTION_REFERENCE
@@ -7467,7 +7486,7 @@
         </member>
         <member name="M:CitizenFX.Shared.Native.Natives.ExecuteCommand(CitizenFX.Core.CString)">
             <summary>
-            EXECUTE_COMMAND
+            Depending on your use case you may need to use `add_acl resource.&lt;your_resource_name&gt; command.&lt;command_name&gt; allow` to use this native in your resource.
             </summary>
         </member>
         <member name="M:CitizenFX.Shared.Native.Natives.FindKvp(System.Int32)">
@@ -7480,6 +7499,11 @@
             <returns>
             None.
             </returns>
+        </member>
+        <member name="M:CitizenFX.Shared.Native.Natives.FormatStackTrace(System.Object)">
+            <summary>
+            An internal function for converting a stack trace object to a string.
+            </summary>
         </member>
         <member name="M:CitizenFX.Shared.Native.Natives.GetConvar(CitizenFX.Core.CString,CitizenFX.Core.CString)">
             <summary>
@@ -7545,9 +7569,65 @@
             The name of the resource.
             </returns>
         </member>
+        <member name="M:CitizenFX.Shared.Native.Natives.GetEntitiesInRadius(System.Single,System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Object)">
+            <summary>
+            ### Supported types
+            
+            *   \[1] : Peds (including animals) and players.
+            *   \[2] : Vehicles.
+            *   \[3] : Objects (props), doors, and projectiles.
+            
+            ### Coordinates need to be send unpacked (x,y,z)
+            
+            ```lua
+            
+            -- Define the allowed model hashes
+            local allowedModelHashes = { GetHashKey("p_crate03x"), GetHashKey("p_crate22x") }
+            
+            -- Get the player's current coordinates
+            local playerCoords = GetEntityCoords(PlayerPedId())
+            
+            -- Retrieve all entities of type Object (type 3) within a radius of 10.0 units
+            -- that match the allowed model hashes
+            -- and sort output entities by distance
+            local entities = GetEntitiesInRadius(playerCoords.x, playerCoords.y, playerCoords.z, 10.0, 3, true, allowedModelHashes)
+            
+            -- Iterate through the list of entities and print their ids
+            for i = 1, #entities do
+                local entity = entities[i]
+                print(entity)
+            end
+            
+            ```
+            </summary>
+            <param name="x">
+            The X coordinate.
+            </param>
+            <param name="y">
+            The Y coordinate.
+            </param>
+            <param name="z">
+            The Z coordinate.
+            </param>
+            <param name="radius">
+            Max distance from coordinate to entity
+            </param>
+            <param name="entityType">
+            Entity types see list below
+            </param>
+            <param name="sortByDistance">
+            Sort output entites by distance from nearest to farthest
+            </param>
+            <param name="models">
+            List of allowed models its also optional
+            </param>
+            <returns>
+            An array containing entity handles for each entity.
+            </returns>
+        </member>
         <member name="M:CitizenFX.Shared.Native.Natives.GetEntityFromStateBagName(CitizenFX.Core.CString)">
             <summary>
-            Returns the entity handle for the specified state bag name. For use with [ADD_STATE_BAG_CHANGE_HANDLER](?\_0x5BA35AAF).
+            Returns the entity handle for the specified state bag name. For use with [ADD_STATE_BAG_CHANGE_HANDLER](#\_0x5BA35AAF).
             </summary>
             <param name="bagName">
             An internal state bag ID from the argument to a state bag change handler.
@@ -7644,7 +7724,7 @@
         <member name="M:CitizenFX.Shared.Native.Natives.GetNumResourceMetadata(CitizenFX.Core.CString,CitizenFX.Core.CString)">
             <summary>
             Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
-            See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
+            See also: [Resource manifest](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/)
             </summary>
             <param name="resourceName">
             The resource name.
@@ -7808,7 +7888,7 @@
         <member name="M:CitizenFX.Shared.Native.Natives.GetResourceMetadata(CitizenFX.Core.CString,CitizenFX.Core.CString,System.Int32)">
             <summary>
             Gets the metadata value at a specified key/index from a resource's manifest.
-            See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
+            See also: [Resource manifest](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/)
             </summary>
             <param name="resourceName">
             The resource name.
@@ -7848,6 +7928,60 @@
             </summary>
             <returns>
             Value.
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Shared.Native.Natives.GetTrainCruiseSpeed(System.Int32)">
+            <summary>
+            Gets the trains desired speed.
+            </summary>
+            <param name="train">
+            The train handle
+            </param>
+            <returns>
+            The desired cruise speed of the train. Not the speed the train is currently traveling at
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Shared.Native.Natives.GetTrainDirection(System.Int32)">
+            <summary>
+            Gets the direction the train is facing
+            </summary>
+            <param name="train">
+            The train handle
+            </param>
+            <returns>
+            True if the train is moving forward on the track, False otherwise
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Shared.Native.Natives.GetTrainState(System.Int32)">
+            <summary>
+            GET_TRAIN_STATE
+            </summary>
+            <param name="train">
+            The train handle
+            </param>
+            <returns>
+            The trains current state```cpp
+            enum eTrainState
+            {
+                MOVING = 0,
+                ENTERING_STATION,
+                OPENING_DOORS,
+                STOPPED,
+                CLOSING_DOORS,
+                LEAVING_STATION,
+            }
+            ```
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Shared.Native.Natives.GetTrainTrackIndex(System.Int32)">
+            <summary>
+            GET_TRAIN_TRACK_INDEX
+            </summary>
+            <param name="train">
+            The train handle
+            </param>
+            <returns>
+            The track index the train is currently on.
             </returns>
         </member>
         <member name="M:CitizenFX.Shared.Native.Natives.GetVehicleHandbrake(System.Int32)">
@@ -8036,9 +8170,42 @@
             The value to write
             </param>
         </member>
+        <member name="M:CitizenFX.Shared.Native.Natives.SetResourceKvpFloatNoSync(CitizenFX.Core.CString,System.Single)">
+            <summary>
+            Nonsynchronous [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
+            </summary>
+            <param name="key">
+            The key to set
+            </param>
+            <param name="_value">
+            The value to write
+            </param>
+        </member>
         <member name="M:CitizenFX.Shared.Native.Natives.SetResourceKvpInt(CitizenFX.Core.CString,System.Int32)">
             <summary>
             A setter for [GET_RESOURCE_KVP_INT](#\_0x557B586A).
+            </summary>
+            <param name="key">
+            The key to set
+            </param>
+            <param name="_value">
+            The value to write
+            </param>
+        </member>
+        <member name="M:CitizenFX.Shared.Native.Natives.SetResourceKvpIntNoSync(CitizenFX.Core.CString,System.Int32)">
+            <summary>
+            Nonsynchronous [SET_RESOURCE_KVP_INT](#\_0x6A2B1E8) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
+            </summary>
+            <param name="key">
+            The key to set
+            </param>
+            <param name="_value">
+            The value to write
+            </param>
+        </member>
+        <member name="M:CitizenFX.Shared.Native.Natives.SetResourceKvpNoSync(CitizenFX.Core.CString,CitizenFX.Core.CString)">
+            <summary>
+            Nonsynchronous [SET_RESOURCE_KVP](#\_0x21C7A35B) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
             </summary>
             <param name="key">
             The key to set
@@ -8123,8 +8290,8 @@
             
             At this time, the change handler can't opt to reject changes.
             
-            If bagName refers to an entity, use [GET_ENTITY_FROM_STATE_BAG_NAME](?\_0x4BDF1868) to get the entity handle
-            If bagName refers to a player, use [GET_PLAYER_FROM_STATE_BAG_NAME](?\_0xA56135E0) to get the player handle
+            If bagName refers to an entity, use [GET_ENTITY_FROM_STATE_BAG_NAME](#\_0x4BDF1867) to get the entity handle
+            If bagName refers to a player, use [GET_PLAYER_FROM_STATE_BAG_NAME](#\_0xA56135E0) to get the player handle
             </summary>
         </member>
         <member name="F:CitizenFX.Shared.Native.Hash.CANCEL_EVENT">
@@ -8140,6 +8307,16 @@
         <member name="F:CitizenFX.Shared.Native.Hash.DELETE_RESOURCE_KVP">
             <summary>
             DELETE_RESOURCE_KVP
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Shared.Native.Hash.DELETE_RESOURCE_KVP_NO_SYNC">
+            <summary>
+            Nonsynchronous [DELETE_RESOURCE_KVP](#\_0x7389B5DF) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Shared.Native.Hash.DOES_TRAIN_STOP_AT_STATIONS">
+            <summary>
+            DOES_TRAIN_STOP_AT_STATIONS
             </summary>
         </member>
         <member name="F:CitizenFX.Shared.Native.Hash.DUPLICATE_FUNCTION_REFERENCE">
@@ -8159,12 +8336,17 @@
         </member>
         <member name="F:CitizenFX.Shared.Native.Hash.EXECUTE_COMMAND">
             <summary>
-            EXECUTE_COMMAND
+            Depending on your use case you may need to use `add_acl resource.&lt;your_resource_name&gt; command.&lt;command_name&gt; allow` to use this native in your resource.
             </summary>
         </member>
         <member name="F:CitizenFX.Shared.Native.Hash.FIND_KVP">
             <summary>
             FIND_KVP
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Shared.Native.Hash.FORMAT_STACK_TRACE">
+            <summary>
+            An internal function for converting a stack trace object to a string.
             </summary>
         </member>
         <member name="F:CitizenFX.Shared.Native.Hash.GET_CONVAR">
@@ -8192,9 +8374,41 @@
             Returns the name of the currently executing resource.
             </summary>
         </member>
+        <member name="F:CitizenFX.Shared.Native.Hash.GET_ENTITIES_IN_RADIUS">
+            <summary>
+            ### Supported types
+            
+            *   \[1] : Peds (including animals) and players.
+            *   \[2] : Vehicles.
+            *   \[3] : Objects (props), doors, and projectiles.
+            
+            ### Coordinates need to be send unpacked (x,y,z)
+            
+            ```lua
+            
+            -- Define the allowed model hashes
+            local allowedModelHashes = { GetHashKey("p_crate03x"), GetHashKey("p_crate22x") }
+            
+            -- Get the player's current coordinates
+            local playerCoords = GetEntityCoords(PlayerPedId())
+            
+            -- Retrieve all entities of type Object (type 3) within a radius of 10.0 units
+            -- that match the allowed model hashes
+            -- and sort output entities by distance
+            local entities = GetEntitiesInRadius(playerCoords.x, playerCoords.y, playerCoords.z, 10.0, 3, true, allowedModelHashes)
+            
+            -- Iterate through the list of entities and print their ids
+            for i = 1, #entities do
+                local entity = entities[i]
+                print(entity)
+            end
+            
+            ```
+            </summary>
+        </member>
         <member name="F:CitizenFX.Shared.Native.Hash.GET_ENTITY_FROM_STATE_BAG_NAME">
             <summary>
-            Returns the entity handle for the specified state bag name. For use with [ADD_STATE_BAG_CHANGE_HANDLER](?\_0x5BA35AAF).
+            Returns the entity handle for the specified state bag name. For use with [ADD_STATE_BAG_CHANGE_HANDLER](#\_0x5BA35AAF).
             </summary>
         </member>
         <member name="F:CitizenFX.Shared.Native.Hash.GET_GAME_BUILD_NUMBER">
@@ -8273,7 +8487,7 @@
         <member name="F:CitizenFX.Shared.Native.Hash.GET_NUM_RESOURCE_METADATA">
             <summary>
             Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
-            See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
+            See also: [Resource manifest](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/)
             </summary>
         </member>
         <member name="F:CitizenFX.Shared.Native.Hash.GET_NUM_RESOURCES">
@@ -8371,7 +8585,7 @@
         <member name="F:CitizenFX.Shared.Native.Hash.GET_RESOURCE_METADATA">
             <summary>
             Gets the metadata value at a specified key/index from a resource's manifest.
-            See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
+            See also: [Resource manifest](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/)
             </summary>
         </member>
         <member name="F:CitizenFX.Shared.Native.Hash.GET_RESOURCE_STATE">
@@ -8387,6 +8601,26 @@
         <member name="F:CitizenFX.Shared.Native.Hash.GET_STATE_BAG_VALUE">
             <summary>
             Returns the value of a state bag key.
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Shared.Native.Hash.GET_TRAIN_CRUISE_SPEED">
+            <summary>
+            Gets the trains desired speed.
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Shared.Native.Hash.GET_TRAIN_DIRECTION">
+            <summary>
+            Gets the direction the train is facing
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Shared.Native.Hash.GET_TRAIN_STATE">
+            <summary>
+            GET_TRAIN_STATE
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Shared.Native.Hash.GET_TRAIN_TRACK_INDEX">
+            <summary>
+            GET_TRAIN_TRACK_INDEX
             </summary>
         </member>
         <member name="F:CitizenFX.Shared.Native.Hash.GET_VEHICLE_HANDBRAKE">
@@ -8509,9 +8743,24 @@
             A setter for [GET_RESOURCE_KVP_FLOAT](#\_0x35BDCEEA).
             </summary>
         </member>
+        <member name="F:CitizenFX.Shared.Native.Hash.SET_RESOURCE_KVP_FLOAT_NO_SYNC">
+            <summary>
+            Nonsynchronous [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
+            </summary>
+        </member>
         <member name="F:CitizenFX.Shared.Native.Hash.SET_RESOURCE_KVP_INT">
             <summary>
             A setter for [GET_RESOURCE_KVP_INT](#\_0x557B586A).
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Shared.Native.Hash.SET_RESOURCE_KVP_INT_NO_SYNC">
+            <summary>
+            Nonsynchronous [SET_RESOURCE_KVP_INT](#\_0x6A2B1E8) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Shared.Native.Hash.SET_RESOURCE_KVP_NO_SYNC">
+            <summary>
+            Nonsynchronous [SET_RESOURCE_KVP](#\_0x21C7A35B) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
             </summary>
         </member>
         <member name="F:CitizenFX.Shared.Native.Hash.SET_STATE_BAG_VALUE">

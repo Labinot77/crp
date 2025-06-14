@@ -1,9 +1,12 @@
 ================================================================
-======== txAdmin v7.3.2 atop fxserver 12911 Starting - 3/2/2025, 7:07:27 PM
+======== txAdmin v8.0.1 atop fxserver 15859 Starting - 6/14/2025, 11:54:45 PM
 ================================================================
 ================================================================
-======== Log Rotated - 3/2/2025, 7:07:27 PM                     
+======== Log Rotated - 6/14/2025, 11:54:45 PM                   
 ================================================================
-================================================================
-======== txAdmin v7.3.2 atop fxserver 12911 Starting - 3/2/2025, 7:09:21 PM
-================================================================
+[23:55:20][SkyFrost] logged in from 127.0.0.1 via cfxre
+[23:56:22][SkyFrost] Config changes: server.dataPath, server.cfgPath
+[23:56:22][SkyFrost] Resetting server data settings.
+[23:56:35][SkyFrost] Config changes: server.dataPath
+[23:56:35][SkyFrost] Changing global/fxserver settings via setup stepper.
+[00:03:35][SkyFrost] [SkyFrost] executed "RESTART SERVER"
