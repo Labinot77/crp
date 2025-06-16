@@ -165,6 +165,8 @@ FW.AddKeybind("showActionbar", 'Inventory', 'Hotbar', 'Z', function(IsPressed)
             Visible = true,
             Items = FW.Functions.GetPlayerData().inventory
         })
+
+        ShowRadioChannel()
     else
         SendNUIMessage({
             Action = "InventoryHotbar",
@@ -172,6 +174,22 @@ FW.AddKeybind("showActionbar", 'Inventory', 'Hotbar', 'Z', function(IsPressed)
         })
     end
 end)
+
+function ShowRadioChannel()
+    local PlayerData = FW.Functions.GetPlayerData()
+    local CurrentChannel = exports['fw-radio']:GetCurrentChannel()
+
+    if CurrentChannel ~= 0 then
+        exports['fw-hud']:SetHudData(exports['fw-hud']:GetHudId('Voice'), 'InsideText', CurrentChannel)
+
+        Citizen.SetTimeout(3000, function()
+            if not NetworkIsPlayerTalking(PlayerId()) then
+                exports['fw-hud']:SetHudData(exports['fw-hud']:GetHudId('Voice'), 'InsideText', false)
+            end
+        end)
+    end
+end
+
 
 -- Events
 -- RegisterNetEvent("fw-inventory:Client:RefreshCustomTypes")

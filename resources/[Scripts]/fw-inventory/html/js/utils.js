@@ -93,13 +93,13 @@ const BuildInventory = (InvContainer, InvType, Items, MaxSlots) => {
     var _sNewInvType = InvType
     switch(InvType){
         case 'Player':
-            _sNewInvType = 'Speler';
+            _sNewInvType = 'Player';
             break;
         case 'Store':
-            _sNewInvType = 'Winkel';
+            _sNewInvType = 'Store';
             break;
         case 'Drop':
-            _sNewInvType = 'Grond';
+            _sNewInvType = 'Ground';
             break;
         
     }

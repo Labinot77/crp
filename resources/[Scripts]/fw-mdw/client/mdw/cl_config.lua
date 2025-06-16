@@ -81,6 +81,7 @@ RegisterNUICallback("Config/FetchAllStaff", function(Data, Cb)
 end)
 
 RegisterNUICallback("Config/CreateStaff", function(Data, Cb)
+    
     local Result = FW.SendCallback("fw-mdw:Server:Config:CreateStaff", Data)
     Cb(Result)
 end)

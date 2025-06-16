@@ -17,7 +17,7 @@ FW.Functions.CreateCallback("fw-mdw:Server:Businesses:FetchEmployees", function(
         })
 
         for k, v in pairs(Employees) do
-            v.Name = FW.Functions.GetPlayerCharName(v.Cid) or "Persoon bestaat niet..."
+            v.Name = FW.Functions.GetPlayerCharName(v.Cid) or "Person does not exist..."
         end
     end
 

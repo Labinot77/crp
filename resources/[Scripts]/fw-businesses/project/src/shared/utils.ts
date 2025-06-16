@@ -29,6 +29,7 @@ const CommaValue = (amount: number): string => {
 export const Round = (value: number, decimals: number | undefined): number => {
     return decimals ? Math.floor((value * 10 ** decimals) + 0.5) / (10 ** decimals) : Math.floor(value + 0.5);
 }
+exp("Round", Round);
 
 export const NumberWithCommas = (amount: number): string => {
     return new Intl.NumberFormat('nl-NL', {

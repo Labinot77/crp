@@ -62,7 +62,7 @@
                         <Button
                             Color="success"
                             on:click={() => SendEvent("Preferences/Save", {Preferences: $MyPreferences})}
-                        >Opslaan</Button>
+                        >Save</Button>
                     </div>
 
                     <div class="preferences-page-container">

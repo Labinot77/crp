@@ -35,7 +35,7 @@
             <p><span>{KMHSpeed}</span><br>KMH</p>
             <svg viewBox="0 0 62 62" style="width: 100%;">
                 <circle id="hud-speed__bgCircle" stroke="#9E9E9E" stroke-width="6" fill="transparent" r="27" cx="31" cy="31" stroke-dasharray="169.0" stroke-dashoffset="56.54"></circle>
-                <circle id="hud-speed__circle" stroke="white" stroke-width="6" fill="transparent" r="27" cx="31" cy="31" stroke-dasharray="169.0" stroke-dashoffset={169 * (1.0 - (CarRPM / 100 * 56.54))} style="transition: stroke-dashoffset 400ms linear 0s; will-change: transition;"></circle>
+                <circle id="hud-speed__circle" stroke="white" stroke-width="6" fill="transparent" r="27" cx="31" cy="31" stroke-dasharray="169.0" stroke-dashoffset={169 * (1.0 - (CarRPM / 72 * 56.54))} style="transition: stroke-dashoffset 400ms linear 0s; will-change: transition;"></circle>
             </svg>
         </div>
 

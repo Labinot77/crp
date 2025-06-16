@@ -142,7 +142,7 @@ AddEventHandler("fw-jobmanager:Client:Oxy:DeliverGoods", function(Data, Entity)
         return
     end
 
-    if math.random() < 0.4 then
+    if math.random() < 0.3 then
         TriggerServerEvent("fw-mdw:Server:SendAlert:Oxy", GetEntityCoords(PlayerPedId()), FW.Functions.GetStreetLabel())
     end
 

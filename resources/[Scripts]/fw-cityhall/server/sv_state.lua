@@ -1,9 +1,9 @@
-FW.Commands.Add("destaat", "Beheer de Staat.", {}, false, function(Source, Args)
+FW.Commands.Add("StateConfig", "Config taxes, ballots ect.", {}, false, function(Source, Args)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
     if Player.PlayerData.job.name ~= 'judge' and Player.PlayerData.job.name ~= 'mayor' then
-        return Player.Functions.Notify("Je kan geen melding maken..", "error")
+        return Player.Functions.Notify("No access", "error")
     end
 
     TriggerClientEvent("fw-cityhall:Client:OpenStateMenu", Source)
@@ -18,9 +18,7 @@ FW.RegisterServer("fw-cityhall:Server:SetTax", function(Source, Data)
     local Player = FW.Functions.GetPlayer(Source)
     if Player == nil then return end
 
-    if Player.PlayerData.job.name ~= "mayor" and Player.PlayerData.job.name ~= "judge" then
-        return
-    end
+    if Player.PlayerData.job.name ~= "mayor" and Player.PlayerData.job.name ~= "judge" then return end
 
     local Result = exports['ghmattimysql']:executeSync("SELECT `taxes` FROM server_config")
     local TaxData = json.decode(Result[1].taxes)

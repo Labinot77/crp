@@ -27,6 +27,7 @@ export const IsBusinessOnLockdown = async (BusinessName: string): Promise<boolea
     return OnLockdown
 }
 
+
 export default () => {
     exp("IsBusinessOwner", IsBusinessOwner);
     exp("HasRolePermission", HasRolePermission);

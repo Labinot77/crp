@@ -22,10 +22,10 @@ AddEventHandler('fw-vehicles:Server:AcceptHeliFuelCharge', function(Data)
     if Player == nil then return end
 
     if exports['fw-financials']:RemoveMoneyFromAccount('1001', '1', Player.PlayerData.charinfo.account, Data.Amount, 'PURCHASE', 'Vliegvaartuig Benzine', false) then
-        TriggerClientEvent('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Betaling Voltooid!", true)
+        TriggerClientEvent('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Payment Completed!", true)
         TriggerClientEvent("fw-vehicles:Client:Fuel:StartRefuel", Source, {Liters = 100})
     else
-        TriggerClientEvent('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Betaling Geweigerd!", true)
+        TriggerClientEvent('fw-phone:Client:UpdateNotification', Source, Data.Id, true, true, false, "Payment Refused!", true)
     end
 end)
 

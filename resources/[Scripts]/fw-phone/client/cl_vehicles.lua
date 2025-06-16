@@ -17,7 +17,7 @@ RegisterNUICallback("Vehicles/TrackVehicle", function(Data, Cb)
             SetNewWaypoint(Result.x, Result.y)
         end)
     else
-        FW.Functions.Notify("Kan voertuig niet lokaliseren..", "error")
+        FW.Functions.Notify("Can't be tracked..", "error")
     end
 end)
 
@@ -25,7 +25,7 @@ RegisterNUICallback("Vehicles/SpawnVehicle", function(Data, Cb)
     Cb("Ok")
 
     if not exports['fw-vehicles']:IsNearParking() then
-        return FW.Functions.Notify("Je moet bij een parkeerplaats zijn om het voertuig te spawnen.", "error")
+        return FW.Functions.Notify("Error.", "error")
     end
 
     TriggerEvent('fw-vehicles:Client:SpawnVehiclePhone', Data.Plate)

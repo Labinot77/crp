@@ -45,7 +45,7 @@ Citizen.CreateThread(function()
 
                 CurrentGarage = Zone.data.Garage
                 IsGovGarage = IsGov
-                exports['fw-ui']:ShowInteraction("Parkeerplaats")
+                exports['fw-ui']:ShowInteraction("Parking")
 
                 ::Skip::
             else
@@ -68,20 +68,20 @@ Citizen.CreateThread(function()
     end
 
     exports['PolyZone']:CreateBox({
-        center = vector3(1002.51, -2310.7, 30.64),
-        length = 1.8,
-        width = 2.4,
+        center =vector3(-191.88, -1162.21, 23.67),
+        length = 1.6,
+        width = 0.8,
     }, {
         name = "garage-depot",
-        heading = 355,
-        minZ = 29.64, maxZ = 32.04,
+        heading = 0,
+        minZ = 22.62, maxZ = 25.02,
 
-        center = vector3(1002.51, -2310.7, 30.64),
+        center =  vector3(369.39, -1532.38, 29.29),
         IsMultiple = false, debugPoly = false,
     }, function(IsInside, Zone, Point)
         if IsInside then
             CurrentGarage = 'depot'
-            exports['fw-ui']:ShowInteraction("[E] Voertuig Depot")
+            exports['fw-ui']:ShowInteraction("[E] Depot")
 
             Citizen.CreateThread(function()
                 while CurrentGarage == 'depot' do
@@ -144,7 +144,7 @@ AddEventHandler("fw-vehicles:Client:LoadHouseGarage", function(HouseId, Data)
         if IsInside then
             CurrentGarage = Zone.data.Garage
             IsGovGarage = false
-            exports['fw-ui']:ShowInteraction("Parkeerplaats")
+            exports['fw-ui']:ShowInteraction("Parking")
         else
             CurrentGarage = nil
             exports['fw-ui']:HideInteraction()

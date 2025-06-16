@@ -18,11 +18,18 @@ end)
 
 RegisterNetEvent("polyzone:printBox")
 AddEventHandler("polyzone:printBox", function(zone)
-  file = io.open('polyzone_created_zones.txt', "a")
-  io.output(file)
-  local output = parseBox(zone)
-  io.write(output)
-  io.close(file)
+    local file = io.open('polyzone_created_zones.txt', "a") -- open file in append mode
+    if file then
+        local output = parseBox(zone)
+        local path = GetResourcePath(GetCurrentResourceName()) .. '/polyzone_created_zones.txt'
+local file = io.open(path, 'a')
+        file:close()
+    else
+      local output = parseBox(zone)
+
+      print(output)
+        print("Failed to open file for writing.")
+    end
 end)
 
 function round(num, numDecimalPlaces)

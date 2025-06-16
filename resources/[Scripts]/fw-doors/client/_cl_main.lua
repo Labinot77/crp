@@ -137,7 +137,7 @@ AddEventHandler('fw-doors:Client:Sync:Doors', function(DoorId, DoorData)
         local HasAccess = HasDoorAcces(DoorId)
         local DoorState = Config.Doors[DoorId].Locked == 1 and true or false
         if not Config.Doors[DoorId].IsHidden then
-            exports['fw-ui']:EditInteraction((HasAccess and "[E] %s" or "%s"):format(DoorState and 'Gesloten' or 'Open'), DoorState and 'error' or 'success', true)
+            exports['fw-ui']:EditInteraction((HasAccess and "[E] %s" or "%s"):format(DoorState and 'Closed' or 'Open'), DoorState and 'error' or 'success', true)
         end
     end
 end)
@@ -190,7 +190,7 @@ function ListenForKeypress(DoorId)
                     if #(GetEntityCoords(PlayerPedId()) - Config.Doors[CurrentDoorId].Coords) < Distance then
                         LockState = CurrentDoorLockState
                         if not Config.Doors[CurrentDoorId].IsHidden then
-                            exports['fw-ui']:ShowInteraction((HasDoorKeys and "[E] %s" or "%s"):format(LockState and 'Gesloten' or 'Open'), LockState and 'error' or 'success')
+                            exports['fw-ui']:ShowInteraction((HasDoorKeys and "[E] %s" or "%s"):format(LockState and 'Locked' or 'Open'), LockState and 'error' or 'success')
                         end
                     end
                 end

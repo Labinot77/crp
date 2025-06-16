@@ -94,30 +94,31 @@ RegisterNetEvent("fw-vehicles:Client:OpenDepot")
 AddEventHandler("fw-vehicles:Client:OpenDepot", function(args)
     local MenuItems = {}
 
+
     MenuItems[#MenuItems + 1] = {
-        Title = "Recentelijk in beslag genomen",
-        Desc = "Lijst met de laatste 10 voertuigen die in het depot gezet zijn sinds laatste tsunami.",
+        Title = "Recently Impounded",
+        Desc = "List of the last 10 vehicles placed in the impound since the last tsunami.",
         Data = { Event = 'fw-vehicles:Client:LookupRecentDepots', Type = 'Client'},
     }
-
+    
     MenuItems[#MenuItems + 1] = {
-        Title = "Persoonlijke Voertuigen",
-        Desc = "Lijst met persoonlijke voertuigen die in het depot staan.",
+        Title = "Personal Vehicles",
+        Desc = "List of personal vehicles currently in the impound.",
         Data = { Event = 'fw-vehicles:Client:LookupPersonalDepot', Type = 'Client'},
     }
-
+    
     MenuItems[#MenuItems + 1] = {
-        Title = "Zoek op Kenteken",
-        Desc = "Zoek op voertuigen met kentekenplaat.",
+        Title = "Search by License Plate",
+        Desc = "Search for vehicles using a license plate.",
         Data = { Event = 'fw-vehicles:Client:LookupByPlate', Type = 'Client'},
     }
-
+    
     MenuItems[#MenuItems + 1] = {
-        Title = "Vraag om hulp",
+        Title = "Request Help",
         Desc = "",
         Data = { Event = 'fw-vehicles:Server:SendMessageToImpound', Type = 'Server'},
     }
-
+    
     Citizen.SetTimeout(100, function()
         FW.Functions.OpenMenu({
             Width = '50vh',
@@ -132,55 +133,55 @@ AddEventHandler("fw-vehicles:Client:LookupRecentDepots", function()
     local MenuItems = {}
 
     MenuItems[#MenuItems + 1] = {
-        Title = "Terug",
+        Title = "Back",
         Data = { Event = 'fw-vehicles:Client:OpenDepot', Type = 'Client'},
     }
 
     MenuItems[#MenuItems + 1] = {
         CloseMenu = false,
-        Title = "Opzoekresultaten",
-        Desc = #Results .. " resultaten gevonden.",
+        Title = "Search Results",
+        Desc = #Results .. " results found.",
         Data = { Event = '', Type = 'Client'},
     }
-
+    
     for k, v in pairs(Results) do
         local VehicleData = FW.Shared.HashVehicles[v.Vehicle]
         if VehicleData == nil then goto Skip end
-
+    
         MenuItems[#MenuItems + 1] = {
             Title = VehicleData.Name .. " | " .. v.Plate,
-            Desc = "Datum: " .. v.ImpoundDate,
+            Desc = "Date: " .. v.ImpoundDate,
             Data = { Event = '', Type = 'Client'},
             SecondMenu = {
                 {
                     CloseMenu = false,
-                    Title = 'Voertuig Informatie',
-                    Desc = ('Kenteken: %s | VIN: %s'):format(v.Plate, v.VIN),
+                    Title = 'Vehicle Information',
+                    Desc = ('Plate: %s | VIN: %s'):format(v.Plate, v.VIN),
                 },
                 {
                     CloseMenu = false,
-                    Title = 'Depot Informatie',
-                    Desc = ('Reden: %s | Uitgever: %s'):format(v.Reason, v.Issuer),
+                    Title = 'Depot Information',
+                    Desc = ('Reason: %s | Issued by: %s'):format(v.Reason, v.Issuer),
                 },
                 {
                     CloseMenu = false,
-                    Title = 'Beslagname Informatie',
-                    Desc = ('Strikes: %s | In beslag tot: %s'):format(v.Strikes, v.ReleaseTxt),
+                    Title = 'Impound Information',
+                    Desc = ('Strikes: %s | Impounded until: %s'):format(v.Strikes, v.ReleaseTxt),
                 },
                 -- {
                 --     CloseMenu = false,
-                --     Title = 'Vrijgavekosten',
-                --     Desc = ('Totale Kosten: %s | BTW: %s%%'):format(exports['fw-businesses']:NumberWithCommas(v.Fee), math.floor((FW.Shared.Tax['Goods'] - 1) * 100)),
+                --     Title = 'Release Fees',
+                --     Desc = ('Total Cost: %s | VAT: %s%%'):format(exports['fw-businesses']:NumberWithCommas(v.Fee), math.floor((FW.Shared.Tax['Goods'] - 1) * 100)),
                 -- },
                 {
                     CloseMenu = false,
-                    Title = 'Vrijgavekosten',
-                    Desc = ('Totale Kosten: %s'):format(exports['fw-businesses']:NumberWithCommas(v.Fee)),
+                    Title = 'Release Fees',
+                    Desc = ('Total Cost: %s'):format(exports['fw-businesses']:NumberWithCommas(v.Fee)),
                 },
                 {
                     CloseMenu = true,
-                    Title = 'Voertuig Ophalen',
-                    -- Desc = 'Door zelf op te halen wordt de vrijgavekosten verdubbeld tot ' .. exports['fw-businesses']:NumberWithCommas(v.Fee * 2) .. '<br/>Om dubbele kosten te voorkomen bel je een depotmedewerker.',
+                    Title = 'Retrieve Vehicle',
+                    -- Desc = 'Retrieving the vehicle yourself will double the release cost to ' .. exports['fw-businesses']:NumberWithCommas(v.Fee * 2) .. '<br/>To avoid extra fees, contact an impound employee.',
                     Data = { Event = "fw-vehicles:Client:TakeOutDepot", Type = "Client", Plate = v.Plate, SelfRetrieve = false },
                 },
             }
@@ -213,14 +214,14 @@ AddEventHandler("fw-vehicles:Client:LookupPersonalDepot", function()
     local MenuItems = {}
 
     MenuItems[#MenuItems + 1] = {
-        Title = "Terug",
+        Title = "Back",
         Data = { Event = 'fw-vehicles:Client:OpenDepot', Type = 'Client'},
     }
 
     MenuItems[#MenuItems + 1] = {
         CloseMenu = false,
-        Title = "Opzoekresultaten",
-        Desc = #Results .. " resultaten gevonden.",
+        Title = "Search Results",
+        Desc = #Results .. " results found.",
         Data = { Event = '', Type = 'Client'},
     }
 
@@ -232,50 +233,51 @@ AddEventHandler("fw-vehicles:Client:LookupPersonalDepot", function()
 
         MenuItems[#MenuItems + 1] = {
             Title = VehicleData.Name .. " | " .. v.plate,
-            Desc = "Datum: " .. ImpoundData.ImpoundDate,
+            Desc = "Date: " .. ImpoundData.ImpoundDate,
             Data = { Event = '', Type = 'Client'},
             SecondMenu = {
                 {
                     CloseMenu = false,
-                    Title = 'Voertuig Informatie',
-                    Desc = ('Kenteken: %s | VIN: %s'):format(v.plate, v.vinnumber),
+                    Title = 'Vehicle Information',
+                    Desc = ('Plate: %s | VIN: %s'):format(v.plate, v.vinnumber),
                 },
                 {
                     CloseMenu = false,
-                    Title = 'Depot Informatie',
-                    Desc = ('Reden: %s | Uitgever: %s'):format(ImpoundData.Reason, ImpoundData.Issuer),
+                    Title = 'Depot Information',
+                    Desc = ('Reason: %s | Issued by: %s'):format(ImpoundData.Reason, ImpoundData.Issuer),
                 },
                 {
                     CloseMenu = false,
-                    Title = 'Beslagname Informatie',
-                    Desc = ('Strikes: %s | In beslag tot: %s'):format(ImpoundData.Strikes, ImpoundData.ReleaseTxt),
+                    Title = 'Impound Information',
+                    Desc = ('Strikes: %s | Impounded until: %s'):format(ImpoundData.Strikes, ImpoundData.ReleaseTxt),
                 },
                 {
                     CloseMenu = false,
-                    Title = 'Vrijgavekosten',
-                    Desc = ('Totale Kosten: %s'):format(exports['fw-businesses']:NumberWithCommas(ImpoundData.Fee)),
+                    Title = 'Release Fees',
+                    Desc = ('Total Cost: %s'):format(exports['fw-businesses']:NumberWithCommas(ImpoundData.Fee)),
                 },
                 {
                     CloseMenu = true,
-                    Title = 'Voertuig Ophalen',
-                    -- Desc = 'Door zelf op te halen wordt de vrijgavekosten verdubbeld tot ' .. exports['fw-businesses']:NumberWithCommas(ImpoundData.Fee * 2) .. '<br/>Om dubbele kosten te voorkomen bel je een depotmedewerker.',
+                    Title = 'Retrieve Vehicle',
+                    -- Desc = 'Retrieving the vehicle yourself will double the release cost to ' .. exports['fw-businesses']:NumberWithCommas(ImpoundData.Fee * 2) .. '<br/>To avoid double fees, contact a depot employee.',
                     Data = { Event = "fw-vehicles:Client:TakeOutDepot", Type = "Client", Plate = v.plate, SelfRetrieve = false },
                 },
             }
         }
 
+        -- Uncomment below if employees can pick up on behalf of players:
         -- local CurrentClock = exports['fw-businesses']:GetCurrentClock()
         -- if CurrentClock.ClockedIn and CurrentClock.Business == 'Los Santos Depot' then
         --     table.insert(MenuItems[#MenuItems].SecondMenu, {
         --         CloseMenu = true,
-        --         Title = 'Voertuig Ophalen als Depot Medewerker',
+        --         Title = 'Retrieve Vehicle as Depot Employee',
         --         Data = { Event = "fw-vehicles:Client:TakeOutDepot", Type = "Client", Plate = v.plate, SelfRetrieve = false },
         --     })
         -- end
 
         ::Skip::
     end
-    
+
     Citizen.SetTimeout(100, function()
         FW.Functions.OpenMenu({
             Width = '50vh',
@@ -284,72 +286,74 @@ AddEventHandler("fw-vehicles:Client:LookupPersonalDepot", function()
     end)
 end)
 
+
 RegisterNetEvent("fw-vehicles:Client:LookupByPlate")
 AddEventHandler("fw-vehicles:Client:LookupByPlate", function()
     Citizen.SetTimeout(100, function()
         local Result = exports['fw-ui']:CreateInput({
-            { Label = 'Kenteken', Icon = 'fas fa-closed-captioning', Name = 'Plate' },
+            { Label = 'License Plate', Icon = 'fas fa-closed-captioning', Name = 'Plate' },
         })
     
         if Result and #Result.Plate == 8 then
             local Vehicle = FW.SendCallback("fw-vehicles:Server:GetVehicleByPlate", Result.Plate)
             if Vehicle == nil or Vehicle.state ~= 'depot' then
-                return FW.Functions.Notify("Geen zoekresultaten gevonden.", "error")
+                return FW.Functions.Notify("No search results found.", "error")
             end
 
             local MenuItems = {}
-        
+
             MenuItems[#MenuItems + 1] = {
-                Title = "Terug",
+                Title = "Back",
                 Data = { Event = 'fw-vehicles:Client:OpenDepot', Type = 'Client'},
             }
-        
+
             local VehicleData = FW.Shared.HashVehicles[GetHashKey(Vehicle.vehicle)]
             local ImpoundData = json.decode(Vehicle.impounddata)
-    
+
             MenuItems[#MenuItems + 1] = {
                 Title = VehicleData.Name .. " | " .. Vehicle.plate,
-                Desc = "Datum: " .. ImpoundData.ImpoundDate,
+                Desc = "Date: " .. ImpoundData.ImpoundDate,
                 Data = { Event = '', Type = 'Client'},
                 SecondMenu = {
                     {
                         CloseMenu = false,
-                        Title = 'Voertuig Informatie',
-                        Desc = ('Kenteken: %s | VIN: %s'):format(Vehicle.plate, Vehicle.vinnumber),
+                        Title = 'Vehicle Information',
+                        Desc = ('Plate: %s | VIN: %s'):format(Vehicle.plate, Vehicle.vinnumber),
                     },
                     {
                         CloseMenu = false,
-                        Title = 'Depot Informatie',
-                        Desc = ('Reden: %s | Uitgever: %s'):format(ImpoundData.Reason, ImpoundData.Issuer),
+                        Title = 'Depot Information',
+                        Desc = ('Reason: %s | Issued by: %s'):format(ImpoundData.Reason, ImpoundData.Issuer),
                     },
                     {
                         CloseMenu = false,
-                        Title = 'Beslagname Informatie',
-                        Desc = ('Strikes: %s | In beslag tot: %s'):format(ImpoundData.Strikes, ImpoundData.ReleaseTxt),
+                        Title = 'Impound Information',
+                        Desc = ('Strikes: %s | Impounded until: %s'):format(ImpoundData.Strikes, ImpoundData.ReleaseTxt),
                     },
                     {
                         CloseMenu = false,
-                        Title = 'Vrijgavekosten',
-                        Desc = ('Totale Kosten: %s'):format(exports['fw-businesses']:NumberWithCommas(ImpoundData.Fee)),
+                        Title = 'Release Fees',
+                        Desc = ('Total Cost: %s'):format(exports['fw-businesses']:NumberWithCommas(ImpoundData.Fee)),
                     },
                     {
                         CloseMenu = true,
-                        Title = 'Voertuig Ophalen',
-                        -- Desc = 'Door zelf op te halen wordt de vrijgavekosten verdubbeld tot ' .. exports['fw-businesses']:NumberWithCommas(ImpoundData.Fee * 2) .. '<br/>Om dubbele kosten te voorkomen bel je een depotmedewerker.',
+                        Title = 'Retrieve Vehicle',
+                        -- Desc = 'Retrieving the vehicle yourself will double the release fee to ' .. exports['fw-businesses']:NumberWithCommas(ImpoundData.Fee * 2) .. '<br/>To avoid double fees, contact a depot employee.',
                         Data = { Event = "fw-vehicles:Client:TakeOutDepot", Type = "Client", Plate = Vehicle.plate, SelfRetrieve = false },
                     },
                 }
             }
-    
+
+            -- Uncomment to allow depot employees to retrieve vehicles on behalf of others:
             -- local CurrentClock = exports['fw-businesses']:GetCurrentClock()
             -- if CurrentClock.ClockedIn and CurrentClock.Business == 'Los Santos Depot' then
             --     table.insert(MenuItems[#MenuItems].SecondMenu, {
             --         CloseMenu = true,
-            --         Title = 'Voertuig Ophalen als Depot Medewerker',
+            --         Title = 'Retrieve Vehicle as Depot Employee',
             --         Data = { Event = "fw-vehicles:Client:TakeOutDepot", Type = "Client", Plate = Vehicle.plate, SelfRetrieve = false },
             --     })
             -- end
-            
+
             Citizen.SetTimeout(100, function()
                 FW.Functions.OpenMenu({
                     Width = '50vh',
@@ -359,6 +363,7 @@ AddEventHandler("fw-vehicles:Client:LookupByPlate", function()
         end
     end)
 end)
+
 
 RegisterNetEvent('fw-vehicles:Client:TakeOutDepot')
 AddEventHandler('fw-vehicles:Client:TakeOutDepot', function(Data)

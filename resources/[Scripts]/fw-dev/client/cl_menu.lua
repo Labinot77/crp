@@ -6,7 +6,7 @@ function InitMenu()
         return
     end
 
-    FW.AddKeybind("openDevMenu", "DEV", "Open Menu", "", function(IsPressed)
+    FW.AddKeybind("openDevMenu", "DEV", "Open Menu", "H", function(IsPressed)
         if not IsPressed then return end
         if FocusingEntity then
             SetNuiFocus(true, true)
@@ -18,7 +18,7 @@ function InitMenu()
         end
     end)
 
-    FW.AddKeybind("devMenuRay", "DEV", "Entity Ray", "", function(IsPressed)
+    FW.AddKeybind("devMenuRay", "DEV", "Entity Ray", "J", function(IsPressed)
         ToggleRay(IsPressed)
     end)
 end

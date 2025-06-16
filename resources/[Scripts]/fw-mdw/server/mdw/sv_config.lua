@@ -206,6 +206,8 @@ FW.Functions.CreateCallback("fw-mdw:Server:Config:CreateStaff", function(Source,
         return Cb(false)
     end
 
+    print("Creating staff member: " .. Data.name)
+
     local Result = exports['ghmattimysql']:executeSync("INSERT INTO `mdw_staff` (`citizenid`, `name`, `image`, `callsign`, `alias`, `phonenumber`, `department`, `rank`) VALUES (@Cid, @Name, @Image, @Callsign, @Alias, @Phone, @Department, @Rank)", {
         ['@Cid'] = Data.citizenid,
         ['@Name'] = Data.name,

@@ -72,7 +72,7 @@ RegisterNUICallback("Preferences/Save", (Data: {Preferences: Preferences}, Cb: F
     SetResourceKvp("fw-hud_preferences", JSON.stringify(Config.MyPreferences));
     emit("fw-hud:Client:OnPreferenceUpdate", Config.MyPreferences);
 
-    FW.Functions.Notify("Opgeslagen!")
+    FW.Functions.Notify("Saved!")
 
     Cb("Ok")
 });
