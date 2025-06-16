@@ -91,7 +91,7 @@
     {#if !$JobManager.CurrentJob && !$JobManager.CurrentGroup}
         <TextField
             Icon="search"
-            Title="Zoeken"
+            Title="Search"
             SubSet={FilterJobs}
             class="phone-misc-input"
         />
@@ -123,7 +123,7 @@
                 
                         <div class="phone-card-actions">
                             <i
-                                data-tooltip="Zet GPS"
+                                data-tooltip="Set GPS"
                                 class="tooltip fas fa-map-marked"
                                 on:keyup on:click={() => { JOB.SetWaypoint(Id + 1) }}
                             />
@@ -133,18 +133,18 @@
             {/each}
         </PaperList>
     {:else if $JobManager.CurrentJob && !$JobManager.CurrentGroup}
-        <div class="phone-jobcenter-groups-info">Word lid van een inactieve groep of maak je eigen groep aan..</div>
+        <div class="phone-jobcenter-groups-info">Join an inactive group or create your own..</div>
         <div class="phone-jobcenter-groups-info-buttons">
             <Button
                 style="margin: 0;"
                 Color="success"
                 on:click={JOB.CreateGroup}
-            >Groep Aanmaken</Button>
+            >Create a group</Button>
             <Button
                 style="margin: 0;"
                 Color="warning"
                 on:click={JOB.Signout}
-            >Uitklokken</Button>
+            >Leave</Button>
         </div>
         
         <PaperList style="top: 13.5vh; height: 71%;">
@@ -162,7 +162,7 @@
                                 <div class="phone-card-text">
                                     <p>
                                         <i
-                                            data-tooltip="Verzoek voor Deelname"
+                                            data-tooltip="Request to Join"
                                             class="tooltip fas fa-sign-in"
                                             on:keyup on:click={() => { JOB.RequestToJoin(Data.Id) }}
                                         />
@@ -204,7 +204,7 @@
                         <div></div>
                     </div>
                 </div>
-                <p>Wachten op Werkopdracht...</p>
+                <p>Waiting for Work...</p>
             </div>
         {/if}
 
@@ -226,12 +226,12 @@
                         HasActions={$JobManager.CurrentGroup.Members[0].Cid == $PlayerData.Cid}
                     >
                         <i 
-                            data-tooltip="Verwijder van Groep"
+                            data-tooltip="Remove from Group"
                             class="fas fa-user-minus"
                             on:keyup on:click={() => { JOB.KickFromGroup(Id + 2) }} 
                         />
                         <i 
-                            data-tooltip="Promoveren naar Leider"
+                            data-tooltip="Promote to Leader"
                             class="fas fa-user-graduate"
                             on:keyup on:click={() => { JOB.PromoteToLeader(Id + 2) }} 
                         />
@@ -242,10 +242,10 @@
 
         <div class="phone-jobcenter-members-buttons">
             {#if $JobManager.CurrentGroup.Members[0].Cid == $PlayerData.Cid}
-                <Button Color="success" on:click={JOB.ToggleReady}>{$JobManager.CurrentGroup.State == "Busy" ? "Niet" : ""} Klaar om te Werken</Button>
-                <Button Color="success" on:click={JOB.DeleteGroup}>Groep Verwijderen</Button>
+                <Button Color="success" on:click={JOB.ToggleReady}>{$JobManager.CurrentGroup.State == "Busy" ? "Niet" : ""} Ready to Work</Button>
+                <Button Color="success" on:click={JOB.DeleteGroup}>Delete Group</Button>
             {:else}
-                <Button Color="success" on:click={JOB.LeaveGroup}>Groep Verlaten</Button>
+                <Button Color="success" on:click={JOB.LeaveGroup}>Abandon Group</Button>
             {/if}
         </div>
     {:else}
@@ -255,7 +255,7 @@
                     <div class="phone-jobcenter-tasks-activity-title">{$JobManager.CurrentGroup.Activity.Title}</div>
                     <div class="phone-jobcenter-tasks-activity-abandon">
                         <i
-                            data-tooltip="Werkopdracht Annuleren"
+                            data-tooltip="Cancel Work Order"
                             data-position="left"
                             class="fas fa-times-circle"
                             on:keyup on:click={JOB.AbandonJob}

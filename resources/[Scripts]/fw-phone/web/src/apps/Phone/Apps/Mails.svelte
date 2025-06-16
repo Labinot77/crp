@@ -39,7 +39,7 @@
 
 <AppWrapper>
     <TextField
-        Title="Zoeken"
+        Title="Search"
         Icon="search"
         SubSet={FilterMails}
         class="phone-misc-input"
@@ -48,8 +48,8 @@
     <PaperList>
         {#each FilteredMails.slice(0, ShowingLimit) as Data, Id}
             <div class="phone-mails-item">
-                <div class="phone-mails-item-from">Verzender: {Data.From}</div>
-                <div class="phone-mails-item-subject">Onderwerp: {Data.Subject}</div>
+                <div class="phone-mails-item-from">From: {Data.From}</div>
+                <div class="phone-mails-item-subject">Subject: {Data.Subject}</div>
                 <div class="phone-mails-item-message">{@html Data.Msg}</div>
                 <div class="phone-mails-item-time">{GetTimeLabel(Data.Timestamp)}</div>
             </div>
@@ -57,7 +57,7 @@
 
         {#if FilteredMails.length > ShowingLimit}
             <div style="display: flex; justify-content: center; width: 100%;">
-                <Button Color="success" on:click={LoadMore}>Laad Meer</Button>
+                <Button Color="success" on:click={LoadMore}>Load more</Button>
             </div>
         {/if}
     </PaperList>

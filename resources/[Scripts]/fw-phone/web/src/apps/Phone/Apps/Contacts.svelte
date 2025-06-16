@@ -39,7 +39,7 @@
                     Id: "Name",
                     Type: "TextField",
                     Data: {
-                        Title: "Naam",
+                        Title: "Name",
                         Icon: "user",
                         Value: Data?.Name || "",
                     },
@@ -49,7 +49,7 @@
                     Type: "TextField",
                     IsPhone: true,
                     Data: {
-                        Title: "Telefoonnummer",
+                        Title: "Phone Nummer",
                         Icon: "phone",
                         Type: "number",
                         Value: Data?.Phone || "",
@@ -85,7 +85,7 @@
             Inputs: [
                 {
                     Type: "Text",
-                    Text: "Contact Verwijderen?",
+                    Text: "Remove Contact?",
                     Data: {
                         style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
                     },
@@ -116,7 +116,7 @@
                     IsPhone: true,
                     ContactPicker: true,
                     Data: {
-                        Title: "Telefoonnummer",
+                        Title: "Phone Nummer",
                         Icon: "phone",
                         Value: Data.phone,
                         Select: await GetContactsSelect(),
@@ -127,7 +127,7 @@
                     Id: "Message",
                     Type: "TextArea",
                     Data: {
-                        Title: "Bericht",
+                        Title: "Message",
                     },
                 },
             ],
@@ -155,7 +155,7 @@
                     Id: "Name",
                     Type: "TextField",
                     Data: {
-                        Title: "Naam",
+                        Title: "Name",
                         Icon: "user",
                         Value: Data.name,
                     },
@@ -165,7 +165,7 @@
                     Type: "TextField",
                     IsPhone: true,
                     Data: {
-                        Title: "Telefoonnummer",
+                        Title: "Phone Nummer",
                         Icon: "phone",
                         Type: "number",
                         Value: Data.phone,
@@ -212,7 +212,7 @@
 <AppWrapper>
     <div class="phone-misc-icons">
         <i
-            data-tooltip="Contact Toevoegen"
+            data-tooltip="Add Contact"
             data-position="left"
             class="fas fa-user-plus"
             on:keyup
@@ -223,7 +223,7 @@
     </div>
 
     <TextField
-        Title="Zoeken"
+        Title="Search"
         Icon="search"
         SubSet={FilterContacts}
         class="phone-misc-input"
@@ -238,7 +238,7 @@
             <p
                 style="margin-bottom: 1.4vh; font-size: 1.5vh; font-family: Roboto; font-weight: 400; line-height: 1.43; letter-spacing: 0.005vh;"
             >
-                Gedeelde Contact(en)
+            Shared Contact(s)
             </p>
             {#each Suggestions as Data, Id}
                 <Paper
@@ -260,7 +260,7 @@
                         on:click={() => {
                             AddContact(Data, true);
                         }}
-                        data-tooltip="Contact Toevoegen"
+                        data-tooltip="Add Contact"
                         class="fas fa-user-plus"
                     />
                 </Paper>
@@ -284,25 +284,25 @@
                 <i
                     on:keyup
                     on:click={() => { DialContact(Data) }}
-                    data-tooltip="Bellen"
+                    data-tooltip="Call"
                     class="fas fa-phone"
                 />
                 <i
                     on:keyup
                     on:click={() => { MessageContact(Data) }}
-                    data-tooltip="Berichten"
+                    data-tooltip="Message"
                     class="fas fa-comment"
                 />
                 <i
                     on:keyup
                     on:click={() => { CopyToClipboard(Data.phone) }}
-                    data-tooltip="Nummer Kopiëren"
+                    data-tooltip="Copy Phone Number"
                     class="fas fa-clipboard"
                 />
                 <i
                     on:keyup
                     on:click={() => { EditContact(Data) }}
-                    data-tooltip="Bewerken"
+                    data-tooltip="Edit"
                     class="fas fa-pencil-alt"
                 />
             </Paper>
@@ -310,7 +310,7 @@
 
         {#if FilteredContacts.length > ShowingLimit}
             <div style="display: flex; justify-content: center; width: 100%;">
-                <Button Color="success" on:click={LoadMore}>Laad Meer</Button>
+                <Button Color="success" on:click={LoadMore}>Load More</Button>
             </div>
         {/if}
     </PaperList>

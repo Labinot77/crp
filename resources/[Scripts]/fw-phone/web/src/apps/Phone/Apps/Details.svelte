@@ -22,11 +22,11 @@
             <i class="fas fa-id-card" />
             <p>{$PlayerData?.Cid}</p>
         </div>
-        <div data-tooltip="Bankrekening" data-position="top" class="phone-details-list-item">
+        <div data-tooltip="Bank Number" data-position="top" class="phone-details-list-item">
             <i class="fas fa-university" />
             <p>{$PlayerData?.BankId}</p>
         </div>
-        <div data-tooltip="Telefoonnummer" data-position="top" class="phone-details-list-item">
+        <div data-tooltip="Phone Number" data-position="top" class="phone-details-list-item">
             <i class="fas fa-mobile" />
             <p>{$PlayerData?.PhoneNumber}</p>
         </div>
@@ -34,17 +34,17 @@
             <i class="fas fa-wallet" style="color: #acd680;" />
             <p>{FormatCurrency.format($PlayerData?.Cash)}</p>
         </div>
-        <div data-tooltip="Bankbalans" data-position="top" class="phone-details-list-item">
+        <div data-tooltip="Bank" data-position="top" class="phone-details-list-item">
             <i class="fas fa-piggy-bank" style="color: #53cee5;" />
             <p>{FormatCurrency.format($PlayerData?.Bank)}</p>
         </div>
-        <div data-tooltip="Casinobalans" data-position="top" class="phone-details-list-item">
+        <div data-tooltip="Casino" data-position="top" class="phone-details-list-item">
             <i class="fas fa-dice-three" style="color: #fd4083;" />
             <p>{FormatCurrency.format($PlayerData?.Casino)}</p>
         </div>
     </div>
     <div class="phone-details-licenses">
-        <p>Licenties</p>
+        <p>License</p>
         <div class="phone-details-licenses-cards">
             {#each Object.entries(MyLicenses) as Data, Id}
                 {#if Data[0] != "weapon" || Data[1] == true}

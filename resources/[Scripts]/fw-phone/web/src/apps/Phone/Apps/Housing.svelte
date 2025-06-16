@@ -82,17 +82,17 @@
 {#if EditingKeys}
     <div class="phone-housing-keys">
         <div class="phone-housing-keys-container">
-            <p style="font-size: 1.5vh; font-family: Roboto; font-weight: 400; line-height: 1.43; letter-spacing: 0.005vh;">Toevoegen:</p>
+            <p style="font-size: 1.5vh; font-family: Roboto; font-weight: 400; line-height: 1.43; letter-spacing: 0.005vh;">Add:</p>
             <TextField Title="BSN" Icon="id-card" bind:RealValue={AddingKeyCid} />
             <div class="phone-housing-keys-buttons">
-                <Button Color="warning" on:click={CloseKeyholder}>Terug</Button>
-                <Button Color="success" on:click={() => { HOUSING.AddKeyholder(EditingKeys, AddingKeyCid, Keyholders.length), CloseKeyholder() }} >Bevestigen</Button>
+                <Button Color="warning" on:click={CloseKeyholder}>Back</Button>
+                <Button Color="success" on:click={() => { HOUSING.AddKeyholder(EditingKeys, AddingKeyCid, Keyholders.length), CloseKeyholder() }} >Confirm</Button>
             </div>
             <hr style="margin: 1vh 0px;">
             <TextField Placeholder="Verwijderen" Title="" Select={Keyholders} ReadOnly={true} bind:Value={RemoveKeyCid} />
             <div class="phone-housing-keys-buttons">
-                <Button Color="warning" on:click={CloseKeyholder}>Terug</Button>
-                <Button Color="success" on:click={() => { HOUSING.RemoveKeyholder(EditingKeys, RemoveKeyCid), CloseKeyholder() }} >Bevestigen</Button>
+                <Button Color="warning" on:click={CloseKeyholder}>Back</Button>
+                <Button Color="success" on:click={() => { HOUSING.RemoveKeyholder(EditingKeys, RemoveKeyCid), CloseKeyholder() }} >Confirm</Button>
             </div>
         </div>
     </div>
@@ -130,14 +130,14 @@
 
     <PaperList style="top: 8vh; height: 48.3vh;">
         {#if CurrentTab == 'Apartments'}
-            <p style="margin-bottom: 1.4vh; font-size: 1.5vh; font-family: Roboto; font-weight: 400; line-height: 1.43; letter-spacing: 0.005vh;">Huidig</p>
+            <p style="margin-bottom: 1.4vh; font-size: 1.5vh; font-family: Roboto; font-weight: 400; line-height: 1.43; letter-spacing: 0.005vh;">Current</p>
             <Paper
                 Icon="house-user"
                 Title="Room: {$PlayerData.RoomId || "000000"}"
                 Description="No3"
                 HasActions={true}
             >
-                <i on:keyup on:click={LocateApartments} data-tooltip="Zet GPS" class="fas fa-map-marked" />
+                <i on:keyup on:click={LocateApartments} data-tooltip="set GPS" class="fas fa-map-marked" />
             </Paper>
         {:else if CurrentTab == 'Housing'}
             {#if Editing}
@@ -145,31 +145,31 @@
                     <Button
                         Color="success"
                         on:click={() => { ToggleEditing(); }}
-                    >Verlaat Edit Mode</Button>
+                    >Exit Edit Mode</Button>
                     <div style="margin-top: 1vh; margin-bottom: 1vh; width: 100%; border-bottom: 0.2vh solid white;" />
                     {#if IsRealtor}
-                        <Button on:click={() => { HOUSING.PlaceGarage(CurrentEditingId)}} Color="success">Plaats Garage Hier</Button>
+                        <Button on:click={() => { HOUSING.PlaceGarage(CurrentEditingId)}} Color="success">Place Garage Here</Button>
                     {:else}
-                        <Button Color="disabled">Plaats Garage Hier</Button>
+                        <Button Color="disabled">Place Garage Here</Button>
                     {/if}
 
-                    <Button on:click={() => { HOUSING.PlaceStash(CurrentEditingId)}} Color="success">Plaats Stash Hier</Button>
+                    <Button on:click={() => { HOUSING.PlaceStash(CurrentEditingId)}} Color="success">Place Stash Here</Button>
 
                     {#if IsRealtor}
-                        <Button on:click={() => { HOUSING.PlaceBackdoor(CurrentEditingId)}} Color="success">Plaats Achterdeur Hier</Button>
+                        <Button on:click={() => { HOUSING.PlaceBackdoor(CurrentEditingId)}} Color="success">Place Backdoor Here</Button>
                     {:else}
-                        <Button Color="disabled">Plaats Achterdeur Hier</Button>
+                        <Button Color="disabled">Place Backdoor Here</Button>
                     {/if}
 
-                    <Button on:click={() => { HOUSING.PlaceWardrobe(CurrentEditingId)}} Color="success">Plaats Kledingkast Hier</Button>
-                    <Button on:click={() => { HOUSING.OpenDecoration(CurrentEditingId)}} Color="success">Open Decoratie</Button>
+                    <Button on:click={() => { HOUSING.PlaceWardrobe(CurrentEditingId)}} Color="success">Place Wardrobe Here</Button>
+                    <Button on:click={() => { HOUSING.OpenDecoration(CurrentEditingId)}} Color="success">Decorate</Button>
                 </div>
             {:else}
                 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;">
                     <Button
                         Color="success"
                         on:click={HOUSING.CheckCurrentLocation}
-                    >Controleer Huidige Locatie</Button>
+                    >Check Current Location</Button>
 
                     {#if ShowQuickEdit}
                         <Button
@@ -220,7 +220,7 @@
                 <Button
                     Color="success"
                     on:click={HOUSING.CheckCurrentLocation}
-                >Controleer Huidige Locatie</Button>
+                >Check Current Location</Button>
 
                 <div style="display: flex; align-items: center;">
                     <Button
@@ -234,23 +234,23 @@
                     <Button
                         Color="success"
                         on:click={HOUSING.SellHousing}
-                    >Huis Verkopen</Button>
+                    >Selling a house</Button>
                 </div>
 
                 <Button
                     Color="success"
                     on:click={HOUSING.CreateHousing}
-                >Locatie Toevoegen</Button>
+                >Add location</Button>
 
                 <Button
                     Color="success"
                     on:click={HOUSING.EditHousing}
-                >Locatie Aanpassen</Button>
+                >Change location</Button>
 
                 <Button
                     Color="success"
                     on:click={HOUSING.DeleteHousing}
-                >Locatie Verwijderen</Button>
+                >Location Delete</Button>
             </div>
         {/if}
     </PaperList>

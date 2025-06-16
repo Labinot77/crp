@@ -34,7 +34,7 @@
                     Id: "Amount",
                     Type: "TextField",
                     Data: {
-                        Title: "Aantal",
+                        Title: "Amount",
                         Icon: "sliders-h",
                         Type: "number",
                     },
@@ -97,7 +97,7 @@
                     IsPhone: true,
                     ContactPicker: true,
                     Data: {
-                        Title: "Telefoonnummer",
+                        Title: "Phone Nummer",
                         Icon: "phone",
                         Value: Data.phone,
                         Select: await GetContactsSelect(),
@@ -108,7 +108,7 @@
                     Id: "Amount",
                     Type: "TextField",
                     Data: {
-                        Title: "Aantal",
+                        Title: "Amount",
                         Icon: "sliders-h",
                         Type: "number",
                     },
@@ -162,7 +162,7 @@
 
 <AppWrapper>
     <TextField
-        Title="Zoeken"
+        Title="Search"
         Icon="search"
         SubSet={FilterWallets}
         class="phone-misc-input"
@@ -199,14 +199,14 @@
                             on:click={() => {
                                 PurchaseCrypto(Data.Id);
                             }}
-                            Color="success">Kopen</Button
+                            Color="success">Buy</Button
                         >
                     {/if}
                     <Button
                         on:click={() => {
                             TransferCrypto(Id + 1, Data);
                         }}
-                        Color="warning">Overmaken</Button
+                        Color="warning">Transfer</Button
                     >
                 </div>
             </Paper>
@@ -214,7 +214,7 @@
 
         {#if FilteredWallets.length > 5}
             <div style="display: flex; justify-content: center; width: 100%;">
-                <Button Color="success" on:click={LoadMore}>Laad Meer</Button>
+                <Button Color="success" on:click={LoadMore}>Load More</Button>
             </div>
         {/if}
     </PaperList>

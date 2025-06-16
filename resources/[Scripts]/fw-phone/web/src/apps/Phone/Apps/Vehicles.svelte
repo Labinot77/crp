@@ -46,7 +46,7 @@
                     Id: "Amount",
                     Type: "TextField",
                     Data: {
-                        Title: "Prijs",
+                        Title: "Price",
                         Icon: "dollar-sign",
                         Type: "number",
                     },
@@ -86,7 +86,7 @@
 
 <AppWrapper>
     <TextField
-        Title="Zoeken"
+        Title="Search"
         Icon="search"
         SubSet={FilterVehicles}
         class="phone-misc-input"
@@ -131,7 +131,7 @@
                         on:click={() => {
                             TrackVehicle(Data);
                         }}
-                        Color="success">Traceren</Button
+                        Color="success">Track</Button
                     >
                 </div>
 

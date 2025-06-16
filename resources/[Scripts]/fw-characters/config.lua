@@ -33,7 +33,7 @@ Config.LimitOverride = {
 Config.SpawnLocations = {
     {
         Id = "lastlocation",
-        Name = "Laatste Locatie",
+        Name = "Last Location",
         Icon = 'fas fa-map-pin',
         Coords = { X = 0.0, Y = 0.0, Z = 0.0 },
         Type = 'Location',
