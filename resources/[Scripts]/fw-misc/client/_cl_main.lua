@@ -169,7 +169,7 @@ AddEventHandler("fw-ui:Ready", function()
             {
                 Name = "talk",
                 Icon = "fas fa-comment",
-                Label = "Praten",
+                Label = "Talk",
                 EventType = "Client",
                 EventName = "fw-misc:Client:TalkToWeaponDealer",
                 EventParams = {},
@@ -206,7 +206,7 @@ AddEventHandler("fw-misc:Client:OpenIllegalBench", function()
 
         local GetCraftingName = FW.SendCallback("fw-laptop:Server:Unknown:GetCraftingName")
         if not GetCraftingName then
-            return FW.Functions.Notify("Je groep is nog niet bekend genoeg..", "error")
+            return FW.Functions.Notify("Your group is not yet well known enough..", "error")
         end
 
         FW.TriggerServer('fw-inventory:Server:OpenInventory', 'Crafting', 'Illegal' .. GetCraftingName)
@@ -342,7 +342,7 @@ RegisterNetEvent("fw-misc:Client:PurchaseWeaponBody")
 AddEventHandler("fw-misc:Client:PurchaseWeaponBody", function(Data)
     Citizen.Wait(100)
     local Result = exports['fw-ui']:CreateInput({
-        { Label = 'Aantal', Name = 'Amount', Type = 'Number' }
+        { Label = 'Amount', Name = 'Amount', Type = 'Number' }
     })
 
     if not Result or not tonumber(Result.Amount) then

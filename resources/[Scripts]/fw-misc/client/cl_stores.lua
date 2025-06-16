@@ -13,7 +13,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'open_store',
                     Icon = 'fas fa-circle',
-                    Label = 'Winkel',
+                    Label = 'Open',
                     EventType = 'Client',
                     EventName = 'fw-misc:Client:OpenStore',
                     EventParams = { Store = v.Store },

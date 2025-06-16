@@ -25,7 +25,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = "open_vending",
                     Icon = 'fas fa-shopping-basket',
-                    Label = "Automaat",
+                    Label = "Open",
                     EventType = "Client",
                     EventName = "fw-misc:Client:OpenVending",
                     EventParams = {Vending = v.Vending},

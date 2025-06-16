@@ -228,7 +228,7 @@ on("fw-businesses:Client:Foodchain:ManageDishes", async (Data: {
 
     const ContextItems: Array<{}> = [
         {
-            Title: "Terug",
+            Title: "Close",
             Data: {
                 Event: 'fw-businesses:Client:Foodchain:OpenDishesMenu',
                 Business: Data.Business

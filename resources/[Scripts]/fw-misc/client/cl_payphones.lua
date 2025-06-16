@@ -25,7 +25,7 @@ AddEventHandler("fw-ui:Ready", function()
                 {
                     Name = 'call_payphone',
                     Icon = 'fas fa-phone-volume',
-                    Label = 'Iemand bellen (€ 150.00)',
+                    Label = 'Call (€ 150.00)',
                     EventType = 'Client',
                     EventName = 'fw-misc:Client:Payphones:Call',
                     EventParams = { Costs = 150, Caller = 'Telefooncel', Phone = "69" .. tostring(FW.Shared.RandomInt(9)) },
@@ -43,13 +43,13 @@ AddEventHandler("fw-misc:Client:Payphones:Call", function(Data, Entity)
     PayphoneCoords = GetEntityCoords(Entity)
 
     local Result = exports['fw-ui']:CreateInput({
-        { Label = 'Telefoonnummer', Icon = 'fas fa-phone', Name = 'Phone' },
+        { Label = 'Phone Number', Icon = 'fas fa-phone', Name = 'Phone' },
     })
 
     if Result and Result.Phone and #Result.Phone == 10 then
         local CashRemoved = FW.SendCallback("FW:RemoveCash", Data.Costs)
         if not CashRemoved then
-            return FW.Functions.Notify("Niet genoeg cash..", "error")
+            return FW.Functions.Notify("No cash..", "error")
         end
         
         CallingFromPayphone = true
@@ -81,7 +81,7 @@ AddEventHandler("fw-phone:Client:SetCallData", function(Data)
         if not PayphoneCoords then end
         while CallingFromPayphone and #(GetEntityCoords(PlayerPedId()) - PayphoneCoords) <= 3.0 do Citizen.Wait(500) end
         if #(GetEntityCoords(PlayerPedId()) - PayphoneCoords) > 3.0 then
-            FW.Functions.Notify("Je gaat te ver weg van de telefooncel..", "error")
+            FW.Functions.Notify("You're going too far from the phone booth..", "error")
             TriggerServerEvent('fw-phone:Server:Contacts:DeclineCall', { CallId = Data.CallId })
         end
         PayphoneCoords = false

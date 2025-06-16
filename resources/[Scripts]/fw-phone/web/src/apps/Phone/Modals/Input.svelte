@@ -11,14 +11,14 @@
     const Buttons = $InputModal.Buttons || [
         {
             Color: "warning",
-            Text: "Terug",
+            Text: "Close",
             Cb: (Result) => {
                 if ($InputModal.OnCancel) $InputModal.OnCancel(Result);
             },
         },
         {
             Color: "success",
-            Text: "Bevestigen",
+            Text: "Submit",
             Cb: (Result) => {
                 if ($InputModal.OnSubmit) $InputModal.OnSubmit(Result);
             },

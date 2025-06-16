@@ -627,7 +627,7 @@ AddEventHandler("fw-police:Client:ShowEmployeesList", function(Data)
 
     local MenuItems = {
         {
-            Title = "Terug",
+            Title = "Close",
             Data = { Event = "fw-police:Client:OpenEmployeelist", Type = "Client", Job = Data.Job },
         },
     }

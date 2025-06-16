@@ -66,17 +66,6 @@ Config.Menu = {
         SubMenus = {'arcade:leave', 'arcade:end', 'arcade:tdm:changeLodout'}
     },
     {
-        Id = "citizen",
-        Title = "Burger",
-        Icon = "#citizen-action",
-        Enabled = function()
-            if not exports['fw-medical']:GetDeathStatus() then
-                return true
-            end
-        end,
-        SubMenus = {'citizen:steal', 'citizen:contact'}
-    },
-    {
         Id = "animations",
         Title = "Loop Stijl",
         Icon = "#global-walking",
@@ -234,6 +223,26 @@ Config.Menu = {
         end,
     },
     {
+        Id = "steal",
+        Title = "Rob",
+        Icon = "#citizen-action-steal",
+        Event = " fw-police:Client:RobPlayer",
+        Close = true,
+        Enabled = function()
+                return true
+        end,
+    },
+    {
+        Id = "givecontact",
+        Title = "Give Contact",
+        Icon = "#citizen-contact",
+        Event = "fw-phone:Server:GiveContactDetails",
+        Close = true,
+        Enabled = function()
+                return true
+        end,
+    },
+    {
         Id = "garage",
         Title = "Voertuigen Acties",
         Icon = "#police-action-vehicle",
@@ -254,7 +263,7 @@ Config.Menu = {
     },
     {
         Id = "judge-actions",
-        Title = "Rechter",
+        Title = "Judge",
         Icon = "#judge-actions",
         Enabled = function()
             if not exports['fw-medical']:GetDeathStatus() and FW.Functions.GetPlayerData().job.name == 'judge' then
@@ -265,7 +274,7 @@ Config.Menu = {
     },
     {
         Id = "cuff",
-        Title = "Boeien",
+        Title = "Cuff",
         Icon = "#citizen-action-cuff",
         Close = true,
         Event = "fw-police:Client:Cuff",
@@ -509,19 +518,19 @@ Config.SubMenus = {
         Event = "fw-mdw:Client:OpenMDW"
     },
     ['police:search'] = {
-        Title = "Fouilleren",
+        Title = "Seach",
         Icon = "#police-action-search",
         Close = true,
         Event = "fw-police:Client:SearchPlayer"
     },
     ["police:seizePossesions"] = {
-        Title = "Items in beslag",
+        Title = "Seize Possesions",
         Icon = "#police-seize-items",
         Close = true,
         Event = "fw-police:Client:SeizePossesionsClosest"
     },
     ["police:fingerprint"] = {
-        Title = "Vingerafdruk scannen",
+        Title = "Scan Fingerprint",
         Icon = "#police-action-fingerprint",
         Close = true,
         Event = "fw-police:Client:CheckFingerprint"
@@ -533,33 +542,33 @@ Config.SubMenus = {
         Event = "fw-police:Client:CheckBank"
     },
     ["police:removeFacewear"] = {
-        Title = "Masker afdoen",
+        Title = "Remove Facewear",
         Icon = "#global-mask",
         Close = true,
         Event = "fw-police:Client:RemoveFacewear"
     },
     ["police:gsr"] = {
-        Title = "GSR-test Afnemen",
+        Title = "GSR-test",
         Icon = "#police-gsr",
         Close = true,
         Event = "fw-police:Client:TakeGSRTest"
     },
     ["police:checkStatus"] = {
-        Title = "Status Controleren",
+        Title = "Check Status",
         Icon = "#police-status",
         Close = true,
         Event = "fw-police:Client:CheckStatus"
     },
 
     ["prison:checkInmateInformation"] = {
-        Title = "Gevangenen Informatie",
+        Title = "Check Inmate Information",
         Icon = "#police-status",
         Close = true,
         Event = "fw-prison:Client:CheckInmateInformation"
     },
 
     ['ambulance:heal'] = {
-        Title = "Burger Verzorgen",
+        Title = "Heal",
         Icon = "#ambulance-action-heal",
         Close = true,
         Event = "fw-medical:Client:Medic:Heal"
@@ -583,70 +592,58 @@ Config.SubMenus = {
         Event = "fw-medical:Client:Medic:TakeDNA"
     },
     ['vehicle:delete'] = {
-        Title = "Voertuig Verwijderen",
+        Title = "Delete vehicle",
         Icon = "#police-action-vehicle-delete",
         Close = true,
         Event = "FW:Command:DeleteVehicle"
     },
     ['judge:job'] = {
-        Title = "Advocaat Aannemen",
+        Title = "Hire a Lawyer",
         Icon = "#judge-actions",
         Close = true,
         Event = "fw-cityhall:client:lawyer:add:closest"
     },
     ['judge:createBusiness'] = {
-        Title = "Creëer Bedrijf",
+        Title = "Create Business",
         Icon = "#judge-employment",
         Close = true,
         Event = "fw-businesses:Client:CreateBusiness"
     },
     ['judge:giveLicense'] = {
-        Title = "Geef/Ontneem Vergunningen",
+        Title = "Give/Take away Permits",
         Icon = "#plane-paper",
         Close = true,
         Event = "fw-cityhall:Client:GiveLicense"
     },
     ['judge:subpoenaRecords'] = {
-        Title = "Telefoongegevens Aanvragen",
+        Title = "Request telephone details",
         Icon = "#judge-phone",
         Close = true,
         Event = "fw-cityhall:Client:SubpoenaRecords"
     },
     ['judge:subpoenaFinancials'] = {
-        Title = "Financiëlegegevens Aanvragen",
+        Title = "Financial information Requests",
         Icon = "#global-bank",
         Close = true,
         Event = "fw-cityhall:Client:SubpoenaFinancials"
     },
     ['judge:financialState'] = {
-        Title = "Rekening (de)activeren",
+        Title = "Activate(de) account",
         Icon = "#global-bank",
         Close = true,
         Event = "fw-cityhall:Client:FinancialState"
     },
     ['judge:financialMonitor'] = {
-        Title = "Rekening Monitoren",
+        Title = "Account Monitoring",
         Icon = "#global-bank",
         Close = true,
         Event = "fw-cityhall:Client:FinancialMonitorState"
     },
     ['judge:createFinancial'] = {
-        Title = "Creëer Bankrekening",
+        Title = "Create Bank Account",
         Icon = "#global-bank",
         Close = true,
         Event = "fw-cityhall:Client:CreateFinancial"
-    },
-    ['citizen:contact'] = {
-        Title = "Contact Gegevens",
-        Icon = "#citizen-contact",
-        Close = true,
-        Event = "fw-phone:Server:GiveContactDetails"
-    },
-    ['citizen:steal'] = {
-        Title = "Beroven",
-        Icon = "#citizen-action-steal",
-        Close = true,
-        Event = "fw-police:Client:RobPlayer"
     },
     ['vehicle:flip'] = {
         Title = "Voertuig Omduwen",

@@ -26,9 +26,9 @@
 <div class="close-modal-wrapper">
     <div class="close-modal-container">
         {#if $ClothingPrice > 0}
-            <h2>Totaal: <span>{FormatCurrency.format($ClothingPrice)} Incl. {$Tax.Clothes}% btw</span></h2>
+            <h2>Total: <span>{FormatCurrency.format($ClothingPrice)} Incl. {$Tax.Clothes}% btw</span></h2>
         {:else}
-            <h2>Totaal: <span>Gratis</span></h2>
+            <h2>Total: <span>Free</span></h2>
         {/if}
 
         <div class="close-modal-buttons">
@@ -37,30 +37,30 @@
                     Color="success"
                     style="margin: 0;"
                     on:click={() => Pay("Cash")}
-                >Betaal met Cash</Button>
+                >Pay with cash</Button>
 
                 <Button
                     Color="success"
                     style="margin: 0;"
                     on:click={() => Pay("Bank")}
-                >Betaal met Bank</Button>
+                >Pay with bank</Button>
             {:else}
                 <Button
                     Color="success"
                     style="margin: 0;"
                     on:click={() => Pay("Cash")}
-                >Opslaan</Button>
+                >Save</Button>
             {/if}
             <Button
                 Color="warning"
                 style="margin: 0;"
                 on:click={() => Discard()}
-            >Annuleren</Button>
+            >Discard</Button>
             <Button
                 Color="default"
                 style="margin: 0;"
                 on:click={() => Close()}
-            >Ga Terug</Button>
+            >Close</Button>
         </div>
     </div>
 

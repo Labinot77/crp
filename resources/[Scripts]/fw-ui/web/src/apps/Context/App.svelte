@@ -34,7 +34,7 @@
         if (Data.SecondMenu) {
             ContextItems = [
                 {
-                    Title: "Terug",
+                    Title: "Close",
                     GoBack: true,
                 },
                 ...Data.SecondMenu
@@ -80,7 +80,7 @@
                     <div class="context-item-text">
                         <div style="width: 100%;">
                             <p style="display: inline;">
-                                {#if Data.Title == 'Terug' && !Data.Icon}
+                                {#if Data.Title == 'Close' && !Data.Icon}
                                     <i class="fas fa-chevron-left" style="margin-right: .6vh;"></i>
                                 {/if}
                                 {@html Data.Title}

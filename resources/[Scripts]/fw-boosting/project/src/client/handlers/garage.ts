@@ -67,11 +67,11 @@ onNet("fw-boosting:Client:OpenContractSales", async () => {
     const Result = await FW.SendCallback("fw-boosting:Server:GetContractsPool");
 
     const ContextItems = [
-        {
-            Icon: "exclemation-cricle",
-            Title: "Contracten die tekoop zijn",
-            Desc: "Kom later terug voor andere opties.."
-        }
+      {
+        Icon: "exclemation-cricle",
+        Title: "Contracts for sale",
+        Desc: "Come back later for other options..",
+      },
     ];
 
     for (let i = 0; i < Result.length; i++) {
@@ -81,7 +81,7 @@ onNet("fw-boosting:Client:OpenContractSales", async () => {
         ContextItems.push({
             Icon: "car",
             Title: `<div></div>`,
-            Desc: `Klasse: ${Model.Class}`
+            Desc: `Class: ${Model.Class}`
         });
     };
 
@@ -106,22 +106,22 @@ setImmediate(() => {
         LoadGarage();
     })
 
-    exp['fw-ui'].AddEyeEntry(`boosting_special_contracts_buyer`, {
-        Type: 'Entity',
-        EntityType: 'Ped',
-        SpriteDistance: 10.0,
-        Position: { x: -1507.61, y: -3005.03, z: -82.56, w: 358.62 },
-        Model: "mp_m_weapwork_01",
-        Options: [
-            {
-                Name: 'talk',
-                Icon: 'fas fa-comment',
-                Label: 'Praten',
-                EventType: 'Client',
-                EventName: 'fw-boosting:Client:OpenContractSales',
-                EventParams: {},
-                Enabled: () => true,
-            }
-        ]
-    })
+    exp["fw-ui"].AddEyeEntry(`boosting_special_contracts_buyer`, {
+      Type: "Entity",
+      EntityType: "Ped",
+      SpriteDistance: 10.0,
+      Position: { x: -1507.61, y: -3005.03, z: -82.56, w: 358.62 },
+      Model: "mp_m_weapwork_01",
+      Options: [
+        {
+          Name: "talk",
+          Icon: "fas fa-comment",
+          Label: "Talk",
+          EventType: "Client",
+          EventName: "fw-boosting:Client:OpenContractSales",
+          EventParams: {},
+          Enabled: () => true,
+        },
+      ],
+    });
 });

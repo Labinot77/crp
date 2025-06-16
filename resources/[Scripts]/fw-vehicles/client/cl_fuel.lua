@@ -49,7 +49,7 @@ Citizen.CreateThread(function()
                 {
                     Name = "use_pump",
                     Icon = 'fas fa-gas-pump',
-                    Label = "Gebruik Benzinepomp",
+                    Label = "Use Pump",
                     EventType = "Client",
                     EventName = "fw-vehicles:Client:Fuel:UsePump",
                     EventParams = {},
@@ -60,7 +60,7 @@ Citizen.CreateThread(function()
                 {
                     Name = "return_hose",
                     Icon = 'fas fa-hand-holding',
-                    Label = "Slang Terugleggen",
+                    Label = "Put Nozzle",
                     EventType = "Client",
                     EventName = "fw-vehicles:Client:Fuel:ReturnHose",
                     EventParams = {},
@@ -125,14 +125,14 @@ AddEventHandler("fw-vehicles:Client:Fuel:UsePump", function()
         MainMenuItems = {
             {
                 Icon = 'gas-pump',
-                Title = "Benzinepomp",
-                Desc = "Selecteer het soort benzine je wilt gebruiken",
+                Title = "Pump",
+                Desc = "Select the type of gasoline you want to use",
                 CloseMenu = false,
             },
             {
                 Icon = 'info-circle',
-                Title = "Regulier",
-                Desc = "Octaan: 95 | Prijs per liter: " .. exports['fw-businesses']:NumberWithCommas(Config.FuelPrice),
+                Title = "Regular",
+                Desc = "Octaan: 95 | Price per litre: " .. exports['fw-businesses']:NumberWithCommas(Config.FuelPrice),
                 Data = { Event = 'fw-vehicles:Client:Fuel:GrabHose', Type = 'Client' },
                 CloseMenu = true,
             },
@@ -179,24 +179,24 @@ AddEventHandler("fw-vehicles:Client:Fuel:RefuelVehicle", function()
         MainMenuItems = {
             {
                 Icon = 'info-circle',
-                Title = "Voertuig Tanken",
-                Desc = "Brandstof Aantal: " .. math.ceil(100 - FuelLevel) .. " | Totale Kosten: " .. exports['fw-businesses']:NumberWithCommas(FW.Shared.CalculateTax("Gas", (100 - FuelLevel) * Config.FuelPrice)),
+                Title = "Vehicle Refueling",
+                Desc = "Fuel: " .. math.ceil(100 - FuelLevel) .. " | Total: " .. exports['fw-businesses']:NumberWithCommas(FW.Shared.CalculateTax("Gas", (100 - FuelLevel) * Config.FuelPrice)),
             },
             {
                 Icon = "gas-pump",
-                Title = "Start met Tanken",
+                Title = "Start refueling",
                 Data = { Event = 'fw-vehicles:Client:Fuel:StartRefuel', Type = 'Client', Liters = 100 - FuelLevel },
                 Disabled = not IsBillPaid,
             },
             {
                 Icon = "credit-card",
-                Title = "Verstuur Rekening",
+                Title = "Send Invoice",
                 Data = { Event = 'fw-vehicles:Client:Fuel:SendBill', Type = 'Client', SelfServe = false },
                 Disabled = IsBillPaid,
             },
             {
                 Icon = "portrait",
-                Title = "Zelfbediening",
+                Title = "Self-service",
                 Data = { Event = 'fw-vehicles:Client:Fuel:SendBill', Type = 'Client', SelfServe = true },
                 Disabled = IsBillPaid,
             },
@@ -210,7 +210,7 @@ AddEventHandler("fw-vehicles:Client:Fuel:SendBill", function(Data)
     if Entity <= 0 or EntityType ~= 2 then return end
 
     local FuelLevel = GetVehicleFuelLevel(Entity)
-    if 100 - FuelLevel < 5 then return FW.Functions.Notify("Je tank zit nog vol..", "error") end
+    if 100 - FuelLevel < 5 then return FW.Functions.Notify("Your tank is full..", "error") end
 
     local Plate = GetVehicleNumberPlateText(Entity)
     local Liters = 100 - FuelLevel
@@ -241,7 +241,7 @@ AddEventHandler("fw-vehicles:Client:Fuel:StartRefuel", function(Data)
             if IsVehicleEngineOn(Entity) then
                 AddExplosion(GetEntityCoords(Entity), EXPLOSION_CAR, 4.0, true, false, 20.0)
                 TriggerServerEvent('fw-mdw:Server:SendAlert:Explosion', GetEntityCoords(Entity), FW.Functions.GetStreetLabel())
-                FW.Functions.Notify('Tanken met de motor aan klinkt niet als een goed idee..', 'error')
+                FW.Functions.Notify('Refueling with the engine running doesnt sound like a good idea..', 'error')
 
                 if not exports['fw-police']:IsStatusAlreadyActive('gasoline') then
                     TriggerEvent('fw-police:Client:SetStatus', 'gasoline', 300)
@@ -252,7 +252,7 @@ AddEventHandler("fw-vehicles:Client:Fuel:StartRefuel", function(Data)
         end
     end)
 
-    FW.Functions.Progressbar("fuel", "Aan het tanken...", 500 * Data.Liters, false, false, {
+    FW.Functions.Progressbar("fuel", "Fueling...", 500 * Data.Liters, false, false, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
