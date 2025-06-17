@@ -38,7 +38,7 @@
                     Id: "Message",
                     Type: "TextArea",
                     Data: {
-                        Title: "Advertentie",
+                        Title: "Adverts",
                     },
                 },
             ],
@@ -90,7 +90,7 @@
     {#if !MyAd}
         <div class="phone-misc-icons">
             <i
-                data-tooltip="Advertentie Plaatsen"
+                data-tooltip="Place an Advert"
                 data-position="left"
                 class="fas fa-plus"
                 on:keyup
@@ -100,7 +100,7 @@
     {/if}
 
     <TextField
-        Title="Zoeken"
+        Title="Search"
         Icon="search"
         SubSet={FilterAds}
         class="phone-misc-input"
@@ -113,12 +113,12 @@
 
         {#if MyAd}
             <div class="phone-yellowpages-my-ad">
-                <span>Jouw Advertentie</span>
+                <span>Your Advertisement</span>
                 <Button
                     Color="warning"
                     style="position: relative; float: right; margin: 0px;"
                     on:click={DeleteAd}
-                    >Verwijderen</Button
+                    >Delete</Button
                 >
             </div>
 
@@ -136,14 +136,14 @@
                 <div class="phone-yellowpages-post-message">{Data.Msg}</div>
                 <div class="phone-yellowpages-post-sender">
                     <div data-tooltip={Data.Sender} class="name">{Data.Sender}</div>
-                    <div data-tooltip="Bellen" on:keyup on:click={() => { CallAdvertiser(Data.Phone) }} class="number">{FormatPhone(Data.Phone)}</div>
+                    <div data-tooltip="Call" on:keyup on:click={() => { CallAdvertiser(Data.Phone) }} class="number">{FormatPhone(Data.Phone)}</div>
                 </div>
             </div>
         {/each}
 
         {#if FilteredAds.length > ShowingLimit}
             <div style="display: flex; justify-content: center; width: 100%;">
-                <Button Color="success" on:click={LoadMore}>Laad Meer</Button>
+                <Button Color="success" on:click={LoadMore}>Load more</Button>
             </div>
         {/if}
     </PaperList>

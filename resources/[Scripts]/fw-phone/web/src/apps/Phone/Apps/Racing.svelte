@@ -26,7 +26,7 @@
 
     const OpenLeaderboard = (TrackId) => {
         CurrentTab = "Leaderboard";
-        LeaderboardClass = "Alles";
+        LeaderboardClass = "All";
 
         SendEvent("Racing/GetLeaderboard", {Id: TrackId}, (Success, Data) => {
             if (!Success) return;
@@ -139,7 +139,7 @@
                             Drawers={RC.GetRacersDrawer(Data)}
                         >
                             <i
-                                data-tooltip="Zet GPS"
+                                data-tooltip="set GPS"
                                 class="fas fa-map-marker"
                                 on:keyup on:click={() => RC.SetGPS(Data.TrackId)}
                             />
@@ -158,25 +158,25 @@
 
                                 {#if Data.Creator == $PlayerData.Cid}
                                     <i
-                                        data-tooltip="Race Starten"
+                                        data-tooltip="Start Race"
                                         class="fas fa-arrow-circle-right"
                                         on:keyup on:click={() => RC.StartRace(Data)}
                                     />
                                     <i
-                                        data-tooltip="Race Beëindigen"
+                                        data-tooltip="End Race"
                                         class="fas fa-flag-checkered"
                                         on:keyup on:click={() => RC.EndRace(Data)}
                                     />
                                 {:else}
                                     <i
-                                        data-tooltip="Race Verlaten"
+                                        data-tooltip="Leave Race"
                                         class="fas fa-user-minus"
                                         on:keyup on:click={() => RC.LeaveRace(Data)}
                                     />
                                 {/if}
                             {:else}
                                 <i
-                                    data-tooltip="Deelnemen aan Race"
+                                    data-tooltip="Join Race"
                                     class="fas fa-user-plus"
                                 on:keyup on:click={() => RC.JoinRace(Data)}
                                 />
@@ -200,13 +200,13 @@
                             {#if Data.Racers.find(Val => Val.Cid == $PlayerData.Cid)}
                                 {#if Data.Creator == $PlayerData.Cid}
                                     <i
-                                        data-tooltip="Race Beëindigen"
+                                        data-tooltip="End Race"
                                         class="fas fa-flag-checkered"
                                         on:keyup on:click={() => RC.EndRace(Data)}
                                     />
                                 {:else}
                                     <i
-                                        data-tooltip="Race Verlaten"
+                                        data-tooltip="Leave Race"
                                         class="fas fa-user-minus"
                                         on:keyup on:click={() => RC.LeaveRace(Data)}
                                     />
@@ -238,7 +238,7 @@
                 {/if}
             {:else if CurrentTab == 'Tracks'} <!-- List of Tracks -->
                 <TextField
-                    Title="Zoeken"
+                    Title="Search"
                     Icon="search"
                     SubSet={FilterTrack}
                     class="phone-misc-input"
@@ -251,16 +251,16 @@
                             <Button Color="success" on:click={async() => {
                                 RC.SaveRaceTrack();
                                 IsCreatingTrack = await RC.IsCreatingTrack();
-                            }}>Track Opslaan</Button>
+                            }}>Save Track</Button>
                             <Button Color="warning" on:click={async() => {
                                 RC.CancelCreation();
                                 IsCreatingTrack = await RC.IsCreatingTrack();
-                            }}>Track Annuleren</Button>
+                            }}>Discard Track</Button>
                         {:else}
                             <Button Color="success" on:click={async() => {
                                 RC.CreateRaceTrack();
                                 IsCreatingTrack = await RC.IsCreatingTrack();
-                            }}>Nieuwe Track Creëren</Button>
+                            }}>Create Track</Button>
                         {/if}
                     </div>
                 {/if}
@@ -284,12 +284,12 @@
                                 on:keyup on:click={() => RC.Preview(Data.Id)}
                             />
                             <i
-                                data-tooltip="Zet GPS"
+                                data-tooltip="set GPS"
                                 class="fas fa-map-marker"
                                 on:keyup on:click={() => RC.SetGPS(Data.Id)}
                             />
                             <i
-                                data-tooltip="Race Aanmaken"
+                                data-tooltip="Create a Race"
                                 class="fas fa-flag-checkered"
                                 on:keyup on:click={() => RC.CreateRace(Data)}
                             />
@@ -305,7 +305,7 @@
                         style="width: 100%;"
                         bind:Value={LeaderboardClass}
                         Select={[
-                            { Text: "Alles" },
+                            { Text: "All" },
                             { Text: "S" },
                             { Text: "A" },
                             { Text: "B" },
@@ -324,7 +324,7 @@
                             <th style="text-align: left;">Best Lap Time</th>
                         </tr>
                         {#each CurrentLeaderboard.Players.filter(Val => {
-                            if (LeaderboardClass == "Alles") return true;
+                            if (LeaderboardClass == "All") return true;
                             return LeaderboardClass == Val.Class;
                         }) as Data, Id}
                             <tr>
@@ -339,7 +339,7 @@
     {:else}
         <div class="phone-misc-icons">
             <i
-                data-tooltip="Sluiten"
+                data-tooltip="Close"
                 data-position="left"
                 class="fas fa-times"
                 on:keyup
@@ -359,7 +359,7 @@
 
         <TextField
             Title=''
-            Placeholder="Verstuur bericht..."
+            Placeholder="Send message..."
             style="position: absolute; left: 0; right: 0; bottom: 4.7vh; margin: 0 auto; width: 89%;"
             OnSubmit={SendRacingMessage}
         />

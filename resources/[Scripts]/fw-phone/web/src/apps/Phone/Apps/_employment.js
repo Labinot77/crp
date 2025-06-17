@@ -34,7 +34,7 @@ export const HireEmployee = () => {
                 Id: "Role",
                 Type: "TextField",
                 Data: {
-                    Title: "Rol",
+                    Title: "Role",
                     Select: Roles,
                 },
             },
@@ -99,7 +99,7 @@ export const PayExternal = () => {
                 Type: "TextField",
                 IsCurrency: true,
                 Data: {
-                    Title: "Aantal",
+                    Title: "Amount",
                     Icon: "dollar-sign",
                     Sub: "€ 0,00"
                 },
@@ -108,7 +108,7 @@ export const PayExternal = () => {
                 Id: "Comment",
                 Type: "TextArea",
                 Data: {
-                    Title: "Commentaar",
+                    Title: "Comment",
                 },
             },
         ],
@@ -169,7 +169,7 @@ export const ChargeExternal = () => {
                 Type: "TextField",
                 IsCurrency: true,
                 Data: {
-                    Title: "Aantal",
+                    Title: "Amount",
                     Icon: "dollar-sign",
                     Sub: "€ 0,00"
                 },
@@ -178,7 +178,7 @@ export const ChargeExternal = () => {
                 Id: "Comment",
                 Type: "TextArea",
                 Data: {
-                    Title: "Commentaar",
+                    Title: "Comment",
                 },
             },
         ],
@@ -229,21 +229,21 @@ export const CreateRole = () => {
                 Id: "Name",
                 Type: "TextField",
                 Data: {
-                    Title: "Naam",
+                    Title: "Name",
                     Icon: "user",
                     Value: "",
                 },
             },
-            { Id: "Hire", Type: "Checkbox", Data: { Title: "Aannemen", } },
-            { Id: "Fire", Type: "Checkbox", Data: { Title: "Ontslaan", } },
-            { Id: "ChangeRole", Type: "Checkbox", Data: { Title: "Rol Aanpassen", } },
-            { Id: "PayEmployee", Type: "Checkbox", Data: { Title: "Werknemer Betalen", } },
-            { Id: "PayExternal", Type: "Checkbox", Data: { Title: "Persoon Betalen", } },
-            { Id: "ChargeExternal", Type: "Checkbox", Data: { Title: "Klant Factureren", } },
-            { Id: "PropertyKeys", Type: "Checkbox", Data: { Title: "Eigendomssleutels", } },
-            { Id: "StashAccess", Type: "Checkbox", Data: { Title: "Stash Toegang", } },
-            { Id: "CraftAccess", Type: "Checkbox", Data: { Title: "Craft Toegang", } },
-            { Id: "VehicleSales", Type: "Checkbox", Data: { Title: "Voertuigverkoop", } },
+            { Id: "Hire", Type: "Checkbox", Data: { Title: "Hire", } },
+            { Id: "Fire", Type: "Checkbox", Data: { Title: "Fire", } },
+            { Id: "ChangeRole", Type: "Checkbox", Data: { Title: "Change Role", } },
+            { Id: "PayEmployee", Type: "Checkbox", Data: { Title: "Pay Employee", } },
+            { Id: "PayExternal", Type: "Checkbox", Data: { Title: "Pay External", } },
+            { Id: "ChargeExternal", Type: "Checkbox", Data: { Title: "Charge External", } },
+            { Id: "PropertyKeys", Type: "Checkbox", Data: { Title: "Property Keys", } },
+            { Id: "StashAccess", Type: "Checkbox", Data: { Title: "Stash Access", } },
+            { Id: "CraftAccess", Type: "Checkbox", Data: { Title: "Craft Access", } },
+            { Id: "VehicleSales", Type: "Checkbox", Data: { Title: "Vehicle Sales", } },
         ],
         OnSubmit: (Result) => {
             LoaderModal.set(true);
@@ -300,67 +300,150 @@ export const EditRole = () => {
     }
 
     InputModal.set({
-        Visible: true,
-        Inputs: [
-            {
-                Id: "Name",
-                Type: "TextField",
-                Data: {
-                    Title: "Rol",
-                    Select: Roles,
-                    SubSet: (Value) => {
-                        console.log("HI :)", Value)
-                        CurrentRole = Biz.business_ranks.find((Val) => Val.Name == Value);
-                    }
-                },
+      Visible: true,
+      Inputs: [
+        {
+          Id: "Name",
+          Type: "TextField",
+          Data: {
+            Title: "Role",
+            Select: Roles,
+            SubSet: (Value) => {
+              console.log("HI :)", Value);
+              CurrentRole = Biz.business_ranks.find((Val) => Val.Name == Value);
             },
-            { OnChange: CheckRoleChange, Id: "Hire", Type: "Checkbox", Data: { Title: "Aannemen", Checked: CurrentRole.Perms["Hire"] } },
-            { OnChange: CheckRoleChange, Id: "Fire", Type: "Checkbox", Data: { Title: "Ontslaan", Checked: CurrentRole.Perms["Fire"] } },
-            { OnChange: CheckRoleChange, Id: "ChangeRole", Type: "Checkbox", Data: { Title: "Rol Aanpassen", Checked: CurrentRole.Perms["ChangeRole"] } },
-            { OnChange: CheckRoleChange, Id: "PayEmployee", Type: "Checkbox", Data: { Title: "Werknemer Betalen", Checked: CurrentRole.Perms["PayEmployee"] } },
-            { OnChange: CheckRoleChange, Id: "PayExternal", Type: "Checkbox", Data: { Title: "Persoon Betalen", Checked: CurrentRole.Perms["PayExternal"] } },
-            { OnChange: CheckRoleChange, Id: "ChargeExternal", Type: "Checkbox", Data: { Title: "Klant Factureren", Checked: CurrentRole.Perms["ChargeExternal"] } },
-            { OnChange: CheckRoleChange, Id: "PropertyKeys", Type: "Checkbox", Data: { Title: "Eigendomssleutels", Checked: CurrentRole.Perms["PropertyKeys"] } },
-            { OnChange: CheckRoleChange, Id: "StashAccess", Type: "Checkbox", Data: { Title: "Stash Toegang", Checked: CurrentRole.Perms["StashAccess"] } },
-            { OnChange: CheckRoleChange, Id: "CraftAccess", Type: "Checkbox", Data: { Title: "Craft Toegang", Checked: CurrentRole.Perms["CraftAccess"] } },
-            { OnChange: CheckRoleChange, Id: "VehicleSales", Type: "Checkbox", Data: { Title: "Voertuigverkoop", Checked: CurrentRole.Perms["VehicleSales"] } },
-        ],
-        OnSubmit: (Result) => {
-            LoaderModal.set(true);
-
-            SendEvent("Employment/EditRole", {Name: Result.Name, Permissions: {...Result}, Business: Biz.business_name}, (Success, Data) => {
-                LoaderModal.set(false);
-                if (!Success) return;
-
-                if (Data.Success) {
-                    let Business = {...get(CurrentBusiness)};
-                    Business.business_ranks = Data.Ranks;
-                    CurrentBusiness.set(Business);
-                    ShowSuccessModal();
-                    return;
-                }
-
-                InputModal.set({
-                    Visible: true,
-                    Inputs: [
-                        {
-                            Type: "Text",
-                            Text: Data.Msg,
-                            Data: {
-                                style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
-                            },
-                        },
-                    ],
-                    Buttons: [
-                        {
-                            Color: "success",
-                            Text: "Okay",
-                            Cb: () => {},
-                        },
-                    ],
-                });
-            });
+          },
         },
+        {
+          OnChange: CheckRoleChange,
+          Id: "Hire",
+          Type: "Checkbox",
+          Data: { Title: "Hire", Checked: CurrentRole.Perms["Hire"] },
+        },
+        {
+          OnChange: CheckRoleChange,
+          Id: "Fire",
+          Type: "Checkbox",
+          Data: { Title: "Fire", Checked: CurrentRole.Perms["Fire"] },
+        },
+        {
+          OnChange: CheckRoleChange,
+          Id: "ChangeRole",
+          Type: "Checkbox",
+          Data: {
+            Title: "Change Role",
+            Checked: CurrentRole.Perms["ChangeRole"],
+          },
+        },
+        {
+          OnChange: CheckRoleChange,
+          Id: "PayEmployee",
+          Type: "Checkbox",
+          Data: {
+            Title: "Pay Employee",
+            Checked: CurrentRole.Perms["PayEmployee"],
+          },
+        },
+        {
+          OnChange: CheckRoleChange,
+          Id: "PayExternal",
+          Type: "Checkbox",
+          Data: {
+            Title: "Pay External",
+            Checked: CurrentRole.Perms["PayExternal"],
+          },
+        },
+        {
+          OnChange: CheckRoleChange,
+          Id: "ChargeExternal",
+          Type: "Checkbox",
+          Data: {
+            Title: "Charge External",
+            Checked: CurrentRole.Perms["ChargeExternal"],
+          },
+        },
+        {
+          OnChange: CheckRoleChange,
+          Id: "PropertyKeys",
+          Type: "Checkbox",
+          Data: {
+            Title: "Property Keys",
+            Checked: CurrentRole.Perms["PropertyKeys"],
+          },
+        },
+        {
+          OnChange: CheckRoleChange,
+          Id: "StashAccess",
+          Type: "Checkbox",
+          Data: {
+            Title: "Stash Access",
+            Checked: CurrentRole.Perms["StashAccess"],
+          },
+        },
+        {
+          OnChange: CheckRoleChange,
+          Id: "CraftAccess",
+          Type: "Checkbox",
+          Data: {
+            Title: "Craft Access",
+            Checked: CurrentRole.Perms["CraftAccess"],
+          },
+        },
+        {
+          OnChange: CheckRoleChange,
+          Id: "VehicleSales",
+          Type: "Checkbox",
+          Data: {
+            Title: "Vehicle Sales",
+            Checked: CurrentRole.Perms["VehicleSales"],
+          },
+        },
+      ],
+      OnSubmit: (Result) => {
+        LoaderModal.set(true);
+
+        SendEvent(
+          "Employment/EditRole",
+          {
+            Name: Result.Name,
+            Permissions: { ...Result },
+            Business: Biz.business_name,
+          },
+          (Success, Data) => {
+            LoaderModal.set(false);
+            if (!Success) return;
+
+            if (Data.Success) {
+              let Business = { ...get(CurrentBusiness) };
+              Business.business_ranks = Data.Ranks;
+              CurrentBusiness.set(Business);
+              ShowSuccessModal();
+              return;
+            }
+
+            InputModal.set({
+              Visible: true,
+              Inputs: [
+                {
+                  Type: "Text",
+                  Text: Data.Msg,
+                  Data: {
+                    style:
+                      "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
+                  },
+                },
+              ],
+              Buttons: [
+                {
+                  Color: "success",
+                  Text: "Okay",
+                  Cb: () => {},
+                },
+              ],
+            });
+          }
+        );
+      },
     });
 };
 
@@ -377,7 +460,7 @@ export const DeleteRole = () => {
                 Id: "Name",
                 Type: "TextField",
                 Data: {
-                    Title: "Rol",
+                    Title: "Role",
                     Select: Roles,
                 },
             },
@@ -433,7 +516,7 @@ export const PayEmployee = (Cid) => {
                 Type: "TextField",
                 IsCurrency: true,
                 Data: {
-                    Title: "Aantal",
+                    Title: "Amount",
                     Icon: "dollar-sign",
                     Sub: "€ 0,00"
                 },
@@ -495,7 +578,7 @@ export const ChangeRole = (Employee) => {
                 Id: "Role",
                 Type: "TextField",
                 Data: {
-                    Title: "Rol",
+                    Title: "Role",
                     Select: Roles,
                 },
             },
@@ -548,7 +631,7 @@ export const FireEmployee = (Employee) => {
         Inputs: [
             {
                 Type: "Text",
-                Text: "Werkenemer Ontslaan?",
+                Text: "Fire Employee?",
                 Data: {
                     style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
                 },
@@ -608,7 +691,7 @@ export const BankAccess = async (Employee) => {
                 Id: "Balance",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Balans",
+                    Title: "Balance",
                     Checked: FinancialAccess['Balance']
                 }
             },
@@ -616,7 +699,7 @@ export const BankAccess = async (Employee) => {
                 Id: "Deposit",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Storten",
+                    Title: "Deposit",
                     Checked: FinancialAccess['Deposit']
                 }
             },
@@ -624,7 +707,7 @@ export const BankAccess = async (Employee) => {
                 Id: "Withdraw",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Opnemen",
+                    Title: "Withdraw",
                     Checked: FinancialAccess['Withdraw']
                 }
             },
@@ -632,7 +715,7 @@ export const BankAccess = async (Employee) => {
                 Id: "Transfer",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Overmaken",
+                    Title: "Transfer",
                     Checked: FinancialAccess['Transfer']
                 }
             },
@@ -640,7 +723,7 @@ export const BankAccess = async (Employee) => {
                 Id: "Transactions",
                 Type: "Checkbox",
                 Data: {
-                    Title: "Transacties",
+                    Title: "Transactions",
                     Checked: FinancialAccess['Transactions']
                 }
             },
@@ -700,7 +783,7 @@ export const Flightschool = {
                     Id: "Give",
                     Type: "Checkbox",
                     Data: {
-                        Title: "Geef brevet",
+                        Title: "Give License",
                         Checked: true
                     }
                 },

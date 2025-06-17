@@ -83,264 +83,264 @@ export const CreateRace = (Data) => {
 
     if (!IsGov()) {
         Inputs = [
-            {
-                Id: "Name",
-                Type: "TextField",
-                Data: {
-                    Title: "Event Naam",
-                    Icon: "user",
-                    Value: "",
-                },
+          {
+            Id: "Name",
+            Type: "TextField",
+            Data: {
+              Title: "Event Naam",
+              Icon: "user",
+              Value: "",
             },
-            {
-                Id: "Alias",
-                Type: "TextField",
-                Data: {
-                    Title: "Alias",
-                    Icon: "user",
-                    Value: _RacingAlias,
-                    ReadOnly: true,
-                },
+          },
+          {
+            Id: "Alias",
+            Type: "TextField",
+            Data: {
+              Title: "Alias",
+              Icon: "user",
+              Value: _RacingAlias,
+              ReadOnly: true,
             },
-            {
-                Id: "Class",
-                Type: "TextField",
-                Data: {
-                    Title: "Voertuig Klasse",
-                    Value: "Open",
-                    Select: [
-                        { Text: "Open" },
-                        { Text: "S" },
-                        { Text: "A" },
-                        { Text: "B" },
-                        { Text: "C" },
-                        { Text: "D" },
-                        { Text: "E" },
-                        { Text: "M" },
-                    ]
-                },
+          },
+          {
+            Id: "Class",
+            Type: "TextField",
+            Data: {
+              Title: "Voertuig Klasse",
+              Value: "Open",
+              Select: [
+                { Text: "Open" },
+                { Text: "S" },
+                { Text: "A" },
+                { Text: "B" },
+                { Text: "C" },
+                { Text: "D" },
+                { Text: "E" },
+                { Text: "M" },
+              ],
             },
-            {
-                Id: "Laps",
-                Type: "TextField",
-                Data: {
-                    Title: "Laps",
-                    Icon: "flag-checkered",
-                    Value: "",
-                    Type: "number"
-                },
+          },
+          {
+            Id: "Laps",
+            Type: "TextField",
+            Data: {
+              Title: "Laps",
+              Icon: "flag-checkered",
+              Value: "",
+              Type: "number",
             },
-            {
-                Id: "Amount",
-                Type: "TextField",
-                Data: {
-                    Title: "Aantal",
-                    Icon: "dollar-sign",
-                    Value: "",
-                    Type: "number"
-                },
+          },
+          {
+            Id: "Amount",
+            Type: "TextField",
+            Data: {
+              Title: "Amount",
+              Icon: "dollar-sign",
+              Value: "",
+              Type: "number",
             },
-            {
-                Id: "Countdown",
-                Type: "TextField",
-                Data: {
-                    Title: "Countdown tot Start",
-                    Icon: "stopwatch-20",
-                    Value: "",
-                    Type: "number"
-                },
+          },
+          {
+            Id: "Countdown",
+            Type: "TextField",
+            Data: {
+              Title: "Countdown to Start",
+              Icon: "stopwatch-20",
+              Value: "",
+              Type: "number",
             },
-            {
-                Id: "DNFPosition",
-                Type: "TextField",
-                Data: {
-                    Title: "DNF Positie",
-                    Icon: "sad-cry",
-                    Value: "",
-                    Type: "number"
-                },
+          },
+          {
+            Id: "DNFPosition",
+            Type: "TextField",
+            Data: {
+              Title: "DNF Position",
+              Icon: "sad-cry",
+              Value: "",
+              Type: "number",
             },
-            {
-                Id: "DNFCountdown",
-                Type: "TextField",
-                Data: {
-                    Title: "DNF Countdown",
-                    Icon: "stopwatch-20",
-                    Value: "",
-                    Type: "number"
-                },
+          },
+          {
+            Id: "DNFCountdown",
+            Type: "TextField",
+            Data: {
+              Title: "DNF Countdown",
+              Icon: "stopwatch-20",
+              Value: "",
+              Type: "number",
             },
-            {
-                Id: "CheckpointPenalty",
-                Type: "TextField",
-                Data: {
-                    Title: "Checkpoint Hit Straftijd",
-                    Icon: "car-crash",
-                    Value: "",
-                    Type: "number"
-                },
+          },
+          {
+            Id: "CheckpointPenalty",
+            Type: "TextField",
+            Data: {
+              Title: "Checkpoint Penalty",
+              Icon: "car-crash",
+              Value: "",
+              Type: "number",
             },
-            {
-                Id: "Phasing",
-                Type: "TextField",
-                Data: {
-                    Title: "Phasing",
-                    Value: "None",
-                    RealValue: "Geen",
-                    Select: [
-                        { Value: "None", Text: "Geen" },
-                        { Value: "30", Text: "30 Seconden" },
-                        { Value: "60", Text: "60 Seconden" },
-                        { Value: "90", Text: "90 Seconden" },
-                        { Value: "Full", Text: "Volledig" },
-                    ]
-                },
+          },
+          {
+            Id: "Phasing",
+            Type: "TextField",
+            Data: {
+              Title: "Phasing",
+              Value: "None",
+              RealValue: "Geen",
+              Select: [
+                { Value: "None", Text: "None" },
+                { Value: "30", Text: "30 Seconds" },
+                { Value: "60", Text: "60 Seconds" },
+                { Value: "90", Text: "90 Seconds" },
+                { Value: "Full", Text: "Full" },
+              ],
             },
-            {
-                Id: "Password",
-                Type: "TextField",
-                Data: {
-                    Title: "Wachtwoord",
-                    Icon: "key",
-                    Value: "",
-                    Type: "password"
-                },
+          },
+          {
+            Id: "Password",
+            Type: "TextField",
+            Data: {
+              Title: "Password",
+              Icon: "key",
+              Value: "",
+              Type: "password",
             },
-            {
-                Id: "Reverse",
-                Type: "Checkbox",
-                Data: {
-                    Title: "Omgekeerd",
-                    Value: false,
-                },
+          },
+          {
+            Id: "Reverse",
+            Type: "Checkbox",
+            Data: {
+              Title: "Reversed",
+              Value: false,
             },
-            {
-                Id: "ShowPosition",
-                Type: "Checkbox",
-                Data: {
-                    Title: "Toon Positie",
-                    Value: false,
-                },
+          },
+          {
+            Id: "ShowPosition",
+            Type: "Checkbox",
+            Data: {
+              Title: "Show Position",
+              Value: false,
             },
-            {
-                Id: "SendNotification",
-                Type: "Checkbox",
-                Data: {
-                    Title: "Stuur Notificatie",
-                    Value: false,
-                },
+          },
+          {
+            Id: "SendNotification",
+            Type: "Checkbox",
+            Data: {
+              Title: "Send Notification",
+              Value: false,
             },
-            {
-                Id: "ForceFPP",
-                Type: "Checkbox",
-                Data: {
-                    Title: "Forceer FPP",
-                    Value: false,
-                },
+          },
+          {
+            Id: "ForceFPP",
+            Type: "Checkbox",
+            Data: {
+              Title: "Force FPP",
+              Value: false,
             },
-            {
-                Id: "AllowNitrous",
-                Type: "Checkbox",
-                Data: {
-                    Title: "Nitrous Toestaan",
-                    Value: true,
-                },
+          },
+          {
+            Id: "AllowNitrous",
+            Type: "Checkbox",
+            Data: {
+              Title: "Allow Nitrous",
+              Value: true,
             },
-            {
-                Id: "FreezeStart",
-                Type: "Checkbox",
-                Data: {
-                    Title: "Freeze tijdens Countdown",
-                    Value: false,
-                },
+          },
+          {
+            Id: "FreezeStart",
+            Type: "Checkbox",
+            Data: {
+              Title: "Freeze Start",
+              Value: false,
             },
-        ]
+          },
+        ];
     
         if (Data.Type == "Sprint") {
             Inputs.splice(3, 1)
         };
     } else {
         Inputs = [
-            {
-                Id: "Name",
-                Type: "TextField",
-                Data: {
-                    Title: "Event Naam",
-                    Icon: "user",
-                    Value: "",
-                },
+          {
+            Id: "Name",
+            Type: "TextField",
+            Data: {
+              Title: "Event Name",
+              Icon: "user",
+              Value: "",
             },
-            {
-                Id: "Laps",
-                Type: "TextField",
-                Data: {
-                    Title: "Laps",
-                    Icon: "flag-checkered",
-                    Value: "",
-                    Type: "number"
-                },
+          },
+          {
+            Id: "Laps",
+            Type: "TextField",
+            Data: {
+              Title: "Laps",
+              Icon: "flag-checkered",
+              Value: "",
+              Type: "number",
             },
-            {
-                Id: "Countdown",
-                Type: "TextField",
-                Data: {
-                    Title: "Countdown tot Start",
-                    Icon: "stopwatch-20",
-                    Value: "",
-                    Type: "number"
-                },
+          },
+          {
+            Id: "Countdown",
+            Type: "TextField",
+            Data: {
+              Title: "Countdown to Start",
+              Icon: "stopwatch-20",
+              Value: "",
+              Type: "number",
             },
-            {
-                Id: "CheckpointPenalty",
-                Type: "TextField",
-                Data: {
-                    Title: "Checkpoint Hit Strafrijd",
-                    Icon: "car-crash",
-                    Value: "",
-                    Type: "number"
-                },
+          },
+          {
+            Id: "CheckpointPenalty",
+            Type: "TextField",
+            Data: {
+              Title: "Checkpoint Penalty",
+              Icon: "car-crash",
+              Value: "",
+              Type: "number",
             },
-            {
-                Id: "Phasing",
-                Type: "TextField",
-                Data: {
-                    Title: "Phasing",
-                    Value: "None",
-                    RealValue: "Geen",
-                    Select: [
-                        { Value: "None", Text: "Geen" },
-                        { Value: "30", Text: "30 Seconden" },
-                        { Value: "60", Text: "60 Seconden" },
-                        { Value: "90", Text: "90 Seconden" },
-                        { Value: "Full", Text: "Volledig" },
-                    ]
-                },
+          },
+          {
+            Id: "Phasing",
+            Type: "TextField",
+            Data: {
+              Title: "Phasing",
+              Value: "None",
+              RealValue: "Geen",
+              Select: [
+                { Value: "None", Text: "None" },
+                { Value: "30", Text: "30 Seconds" },
+                { Value: "60", Text: "60 Seconds" },
+                { Value: "90", Text: "90 Seconds" },
+                { Value: "Full", Text: "Full" },
+              ],
             },
-            {
-                Id: "Reverse",
-                Type: "Checkbox",
-                Data: {
-                    Title: "Omgekeerd",
-                    Value: false,
-                },
+          },
+          {
+            Id: "Reverse",
+            Type: "Checkbox",
+            Data: {
+              Title: "Reversed",
+              Value: false,
             },
-            {
-                Id: "ForceFPP",
-                Type: "Checkbox",
-                Data: {
-                    Title: "Forceer FPP",
-                    Value: false,
-                },
+          },
+          {
+            Id: "ForceFPP",
+            Type: "Checkbox",
+            Data: {
+              Title: "Force FPP",
+              Value: false,
             },
-            {
-                Id: "FreezeStart",
-                Type: "Checkbox",
-                Data: {
-                    Title: "Freeze tijdens Countdown",
-                    Value: false,
-                },
+          },
+          {
+            Id: "FreezeStart",
+            Type: "Checkbox",
+            Data: {
+              Title: "Freeze Start",
+              Value: false,
             },
-        ]
+          },
+        ];
     
         if (Data.Type == "Sprint") {
             Inputs.splice(1, 1)
@@ -435,7 +435,7 @@ export const JoinRace = async (Race) => {
                 Id: "Password",
                 Type: "TextField",
                 Data: {
-                    Title: "Wachtwoord",
+                    Title: "Password",
                     Icon: "user-lock",
                     Value: "",
                     Type: "password",
@@ -489,78 +489,80 @@ export const CreateRaceTrack = () => {
 
 export const SaveRaceTrack = () => {
     InputModal.set({
-        Visible: true,
-        Inputs: [
-            {
-                Id: "Name",
-                Type: "TextField",
-                Data: {
-                    Title: "Naam",
-                    Icon: "user",
-                    Value: "",
-                },
-            },
-            {
-                Id: "Type",
-                Type: "TextField",
-                Data: {
-                    Title: "Type",
-                    Value: "Sprint",
-                    Select: [
-                        { Text: "Sprint" },
-                        { Text: "Laps" },
-                    ]
-                },
-            },
-            {
-                Id: "MinLaps",
-                Type: "TextField",
-                Data: {
-                    Title: "Min Laps",
-                    Icon: "recycle",
-                    Sub: "Alleen nodig indien Type een Lap is!",
-                    Type: "number",
-                },
-            }
-        ],
-        OnSubmit: (Result) => {
-            LoaderModal.set(true);
+      Visible: true,
+      Inputs: [
+        {
+          Id: "Name",
+          Type: "TextField",
+          Data: {
+            Title: "Name",
+            Icon: "user",
+            Value: "",
+          },
+        },
+        {
+          Id: "Type",
+          Type: "TextField",
+          Data: {
+            Title: "Type",
+            Value: "Sprint",
+            Select: [{ Text: "Sprint" }, { Text: "Laps" }],
+          },
+        },
+        {
+          Id: "MinLaps",
+          Type: "TextField",
+          Data: {
+            Title: "Min Laps",
+            Icon: "recycle",
+            Sub: "Only required if Type is a Lap!",
+            Type: "number",
+          },
+        },
+      ],
+      OnSubmit: (Result) => {
+        LoaderModal.set(true);
 
-            if (Result.Name.length <= 0) return;
-            if (Result.Type.length <= 0) return;
-            if (Result.Type.length == 'Laps' && (Result.MinLaps.length <= 0 || Number(Result.MinLaps) <= 0)) return;
+        if (Result.Name.length <= 0) return;
+        if (Result.Type.length <= 0) return;
+        if (
+          Result.Type.length == "Laps" &&
+          (Result.MinLaps.length <= 0 || Number(Result.MinLaps) <= 0)
+        )
+          return;
 
-            SendEvent("Racing/SaveRaceTrack", Result, (Success, Data) => {
-                LoaderModal.set(false);
-                if (!Success) return;
-                
-                if (Data.Success) {
-                    ShowSuccessModal();
-                    return;
-                }
-                
-                InputModal.set({
-                    Visible: true,
-                    Inputs: [
-                        {
-                            Type: "Text",
-                            Text: Data.Msg,
-                            Data: {
-                                style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
-                            },
-                        },
-                    ],
-                    Buttons: [
-                        {
-                            Color: "success",
-                            Text: "Okay",
-                            Cb: () => {},
-                        },
-                    ],
-                });
-            });
-        }
-    })
+        SendEvent("Racing/SaveRaceTrack", Result, (Success, Data) => {
+          LoaderModal.set(false);
+          if (!Success) return;
+
+          if (Data.Success) {
+            ShowSuccessModal();
+            return;
+          }
+
+          InputModal.set({
+            Visible: true,
+            Inputs: [
+              {
+                Type: "Text",
+                Text: Data.Msg,
+                Data: {
+                  style:
+                    "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
+                },
+              },
+            ],
+            Buttons: [
+              {
+                Color: "success",
+                Text: "Okay",
+                Cb: () => {},
+              },
+            ],
+          });
+        });
+      },
+    });
 };
 
 export const CancelCreation = () => {

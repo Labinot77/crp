@@ -29,7 +29,7 @@
         if (!Biz) return "No Biz";
 
         if (Biz.business_owner == $PlayerData.Cid) {
-            return "Eigenaar";
+            return "Owner";
         }
 
         const Employee = Biz.business_employees.find(
@@ -74,39 +74,39 @@
         if (HasPermission("Hire"))
             Retval.push({
                 Icon: "user-plus",
-                Text: "Aannemen",
+                Text: "Hire",
                 Cb: BIZ.HireEmployee,
             });
 
         if (HasPermission("PayExternal"))
             Retval.push({
                 Icon: "hand-holding-usd",
-                Text: "Persoon Betalen",
+                Text: "Pay External",
                 Cb: BIZ.PayExternal,
             });
 
         if (HasPermission("ChargeExternal"))
             Retval.push({
                 Icon: "credit-card",
-                Text: "Klant Factureren",
+                Text: "Charge External",
                 Cb: BIZ.ChargeExternal,
             });
 
         if (HasPermission("ChangeRole")) {
             Retval.push({
                 Icon: "user-tag",
-                Text: "Rol Maken",
+                Text: "Change Role",
                 Cb: BIZ.CreateRole,
             });
             if ($CurrentBusiness.business_ranks.length > 0) {
                 Retval.push({
                     Icon: "user-tag",
-                    Text: "Rol Bewerken",
+                    Text: "Edit Role",
                     Cb: BIZ.EditRole,
                 });
                 Retval.push({
                     Icon: "user-tag",
-                    Text: "Rol Verwijderen",
+                    Text: "Delete Role",
                     Cb: BIZ.DeleteRole,
                 });
             }
@@ -152,7 +152,7 @@
     {#if !$CurrentBusiness.id}
         <TextField
             Icon="search"
-            Title="Zoeken"
+            Title="Search"
             SubSet={FilterBusinesses}
             class="phone-misc-input"
         />
@@ -181,7 +181,7 @@
         </div>
 
         <TextField
-            Title="Zoeken"
+            Title="Search"
             Icon="search"
             class="phone-misc-input phone-misc-input2"
             SubSet={FilterEmployees}
@@ -190,7 +190,7 @@
         <div class="phone-misc-icons">
             {#if $CurrentBusiness.business_name == 'Los Santos Vliegschool'}
                 <i
-                    data-tooltip="Geef/Ontneem Brevet"
+                    data-tooltip="Give/Take away License"
                     data-position="left"
                     class="fas fa-stamp"
                     on:keyup
@@ -215,14 +215,14 @@
                 <Paper
                     Icon="user-secret"
                     Title={$CurrentBusiness.owner_name}
-                    Description="Eigenaar"
+                    Description="OWner"
                     HasActions={true}
                 >
                     {#if HasPermission("PayEmployee")}
                         <i
                             on:keyup
                             on:click={() => { BIZ.PayEmployee($CurrentBusiness.business_owner) }}
-                            data-tooltip="Werknemer Betalen"
+                            data-tooltip="Pay Employee"
                             class="fas fa-hand-holding-usd"
                         />
                     {/if}
@@ -240,7 +240,7 @@
                         <i
                             on:keyup
                             on:click={() => { BIZ.ChangeRole(Data.Cid) }}
-                            data-tooltip="Rol Aanpassen"
+                            data-tooltip="Change Role"
                             class="fas fa-user-tag"
                         />
                     {/if}
@@ -249,7 +249,7 @@
                         <i
                             on:keyup
                             on:click={() => { BIZ.PayEmployee(Data.Cid) }}
-                            data-tooltip="Werknemer Betalen"
+                            data-tooltip="Pay Employee"
                             class="fas fa-hand-holding-usd"
                         />
                     {/if}
@@ -258,7 +258,7 @@
                         <i
                             on:keyup
                             on:click={() => { BIZ.FireEmployee(Data.Cid) }}
-                            data-tooltip="Werknemer Ontslaan"
+                            data-tooltip="Fire"
                             class="fas fa-user-slash"
                         />
                     {/if}
@@ -267,7 +267,7 @@
                         <i
                             on:keyup
                             on:click={() => { BIZ.BankAccess(Data.Cid) }}
-                            data-tooltip="Bank Toegang"
+                            data-tooltip="Bank Access"
                             class="fas fa-university"
                         />
                     {/if}

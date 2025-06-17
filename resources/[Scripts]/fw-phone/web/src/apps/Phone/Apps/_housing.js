@@ -7,23 +7,24 @@ export const IsNearHouse = async HouseId => {
 
     if (!Result) {
         InputModal.set({
-            Visible: true,
-            Inputs: [
-                {
-                    Type: "Text",
-                    Text: "Je moet in de buurt zijn van het eigendom om dit te kunnen doen!",
-                    Data: {
-                        style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
-                    },
-                },
-            ],
-            Buttons: [
-                {
-                    Color: "success",
-                    Text: "Okay",
-                    Cb: () => {},
-                },
-            ],
+          Visible: true,
+          Inputs: [
+            {
+              Type: "Text",
+              Text: "You must be near the property to do this!",
+              Data: {
+                style:
+                  "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
+              },
+            },
+          ],
+          Buttons: [
+            {
+              Color: "success",
+              Text: "Okay",
+              Cb: () => {},
+            },
+          ],
         });
     }
 
@@ -35,23 +36,24 @@ export const IsNearAnyHouse = async () => {
 
     if (!Result) {
         InputModal.set({
-            Visible: true,
-            Inputs: [
-                {
-                    Type: "Text",
-                    Text: "Je moet in de buurt zijn van het eigendom om dit te kunnen doen!",
-                    Data: {
-                        style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
-                    },
-                },
-            ],
-            Buttons: [
-                {
-                    Color: "success",
-                    Text: "Okay",
-                    Cb: () => {},
-                },
-            ],
+          Visible: true,
+          Inputs: [
+            {
+              Type: "Text",
+              Text: "You must be near the property to do this!",
+              Data: {
+                style:
+                  "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
+              },
+            },
+          ],
+          Buttons: [
+            {
+              Color: "success",
+              Text: "Okay",
+              Cb: () => {},
+            },
+          ],
         });
     }
 
@@ -61,48 +63,50 @@ export const IsNearAnyHouse = async () => {
 export const PurchaseHouse = async HouseId => {
     await Delay(0.01);
     InputModal.set({
-        Visible: true,
-        Inputs: [
-            {
+      Visible: true,
+      Inputs: [
+        {
+          Type: "Text",
+          Text: "Are you sure?",
+          Data: {
+            style:
+              "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
+          },
+        },
+      ],
+      OnSubmit: () => {
+        LoaderModal.set(true);
+        SendEvent("Housing/PurchaseHouse", { HouseId }, (Success, Data) => {
+          LoaderModal.set(false);
+          if (!Success) return;
+
+          if (Data.Success) {
+            ShowSuccessModal();
+            return;
+          }
+
+          InputModal.set({
+            Visible: true,
+            Inputs: [
+              {
                 Type: "Text",
-                Text: "Weet je het zeker?",
+                Text: Data.Msg,
                 Data: {
-                    style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
+                  style:
+                    "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
                 },
-            },
-        ],
-        OnSubmit: () => {
-            LoaderModal.set(true);
-            SendEvent("Housing/PurchaseHouse", { HouseId }, (Success, Data) => {
-                LoaderModal.set(false);
-                if (!Success) return;
-
-                if (Data.Success) {
-                    ShowSuccessModal();
-                    return;
-                }
-
-                InputModal.set({
-                    Visible: true,
-                    Inputs: [
-                        {
-                            Type: "Text",
-                            Text: Data.Msg,
-                            Data: {
-                                style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
-                            },
-                        },
-                    ],
-                    Buttons: [
-                        {
-                            Color: "success",
-                            Text: "Okay",
-                            Cb: () => {},
-                        },
-                    ],
-                });
-            });
-        }
+              },
+            ],
+            Buttons: [
+              {
+                Color: "success",
+                Text: "Okay",
+                Cb: () => {},
+              },
+            ],
+          });
+        });
+      },
     });
 };
 
@@ -112,23 +116,24 @@ export const CheckCurrentLocation = async () => {
 
     if (!Result) {
         InputModal.set({
-            Visible: true,
-            Inputs: [
-                {
-                    Type: "Text",
-                    Text: "Geen eigendom gevonden op huidige locatie.",
-                    Data: {
-                        style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
-                    },
-                },
-            ],
-            Buttons: [
-                {
-                    Color: "success",
-                    Text: "Okay",
-                    Cb: () => {},
-                },
-            ],
+          Visible: true,
+          Inputs: [
+            {
+              Type: "Text",
+              Text: "No property found at current location.",
+              Data: {
+                style:
+                  "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
+              },
+            },
+          ],
+          Buttons: [
+            {
+              Color: "success",
+              Text: "Okay",
+              Cb: () => {},
+            },
+          ],
         });
         return;
     }
@@ -136,7 +141,7 @@ export const CheckCurrentLocation = async () => {
     let Buttons = [
         {
             Color: "warning",
-            Text: "Annuleren",
+            Text: "Cancel",
             Cb: () => {},
         },
     ]
@@ -144,7 +149,7 @@ export const CheckCurrentLocation = async () => {
     if (Result.Selling) {
         Buttons.push({
             Color: "success",
-            Text: "Kopen",
+            Text: "Buy",
             Cb: () => {
                 PurchaseHouse(Result.Id)
             },
@@ -156,7 +161,7 @@ export const CheckCurrentLocation = async () => {
         Inputs: [
             {
                 Type: "Text",
-                Text: "Adres:",
+                Text: "Adress:",
                 Data: { style: "font-size: 1.3vh;" }
             },
             {
@@ -166,7 +171,7 @@ export const CheckCurrentLocation = async () => {
             },
             {
                 Type: "Text",
-                Text: "Categorie:",
+                Text: "Category:",
                 Data: { style: "font-size: 1.3vh;" }
             },
             {
@@ -176,7 +181,7 @@ export const CheckCurrentLocation = async () => {
             },
             {
                 Type: "Text",
-                Text: "Prijs:",
+                Text: "Price:",
                 Data: { style: "font-size: 1.3vh;" }
             },
             {
@@ -216,23 +221,24 @@ export const OpenDecoration = (HouseId) => {
 export const AddKeyholder = (HouseId, Cid, AmountOfKeyholders) => {
     if (AmountOfKeyholders + 1 > 8) {
         InputModal.set({
-            Visible: true,
-            Inputs: [
-                {
-                    Type: "Text",
-                    Text: "Maximum aantal sleutels bereikt.",
-                    Data: {
-                        style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
-                    },
-                },
-            ],
-            Buttons: [
-                {
-                    Color: "success",
-                    Text: "Okay",
-                    Cb: () => {},
-                },
-            ],
+          Visible: true,
+          Inputs: [
+            {
+              Type: "Text",
+              Text: "Maximum number of keys reached.",
+              Data: {
+                style:
+                  "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
+              },
+            },
+          ],
+          Buttons: [
+            {
+              Color: "success",
+              Text: "Okay",
+              Cb: () => {},
+            },
+          ],
         });
         return;
     };
@@ -250,58 +256,62 @@ export const SellHousing = async () => {
     if (!await IsNearAnyHouse()) return;
 
     InputModal.set({
-        Visible: true,
-        Inputs: [
-            {
-                Id: "Cid",
-                Type: "TextField",
-                Data: {
-                    Title: "BSN",
-                    Icon: "id-card",
-                    Value: "",
-                },
-            },
-            {
-                Id: "Commission",
-                Type: "TextField",
-                Data: {
-                    Title: "Commissie (Bijvoorbeeld: 20, geen 0.3 etc)",
-                    Icon: "highlighter",
-                    Type: "number"
-                },
-            },
-        ],
-        OnSubmit: (Result) => {
-            LoaderModal.set(true);
-
-            if (Number(Result.Commission) < 0.0 || Number(Result.Commission) > 15.0) {
-                return InputModal.set({
-                    Visible: true,
-                    Inputs: [
-                        {
-                            Type: "Text",
-                            Text: "Commissie kan niet hoger dan 15% zijn.",
-                            Data: {
-                                style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
-                            },
-                        },
-                    ],
-                    Buttons: [
-                        {
-                            Color: "success",
-                            Text: "Okay",
-                            Cb: () => {},
-                        },
-                    ],
-                });
-            }
-
-            SendEvent("Housing/SellLocation", {...Result }, (Success, Data) => {
-                LoaderModal.set(false);
-                if (!Success) return;
-                ShowSuccessModal();
-            });
+      Visible: true,
+      Inputs: [
+        {
+          Id: "Cid",
+          Type: "TextField",
+          Data: {
+            Title: "BSN",
+            Icon: "id-card",
+            Value: "",
+          },
         },
+        {
+          Id: "Commission",
+          Type: "TextField",
+          Data: {
+            Title: "Commision (For example: 20, no 0.3 etc)",
+            Icon: "highlighter",
+            Type: "number",
+          },
+        },
+      ],
+      OnSubmit: (Result) => {
+        LoaderModal.set(true);
+
+        if (
+          Number(Result.Commission) < 0.0 ||
+          Number(Result.Commission) > 15.0
+        ) {
+          return InputModal.set({
+            Visible: true,
+            Inputs: [
+              {
+                Type: "Text",
+                Text: "Commission cannot be higher than 15%.",
+                Data: {
+                  style:
+                    "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;",
+                },
+              },
+            ],
+            Buttons: [
+              {
+                Color: "success",
+                Text: "Okay",
+                Cb: () => {},
+              },
+            ],
+          });
+        }
+
+        SendEvent("Housing/SellLocation", { ...Result }, (Success, Data) => {
+          LoaderModal.set(false);
+          if (!Success) return;
+          ShowSuccessModal();
+        });
+      },
     });
 };
 
@@ -364,7 +374,7 @@ export const EditHousing = async () => {
                 Type: "TextField",
                 IsCurrency: true,
                 Data: {
-                    Title: "Prijs",
+                    Title: "Price",
                     Icon: "sign",
                     Sub: "€ 0,00",
                     Type: "number"
@@ -391,7 +401,7 @@ export const DeleteHousing = async () => {
         Inputs: [
             {
                 Type: "Text",
-                Text: "Weet je het zeker?",
+                Text: "Are you sure?",
                 Data: {
                     style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
                 },

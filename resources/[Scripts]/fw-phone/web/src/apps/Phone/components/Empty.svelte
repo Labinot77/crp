@@ -1,6 +1,6 @@
 <div class="phone-misc-empty">
     <i class="fas fa-frown" />
-    <p>Niets te zien hier!</p>
+    <p>Empty!</p>
 </div>
 
 <style>

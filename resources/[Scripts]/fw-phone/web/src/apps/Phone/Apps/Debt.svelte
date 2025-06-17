@@ -35,7 +35,7 @@
             Inputs: [
                 {
                     Type: "Text",
-                    Text: "Weet je het zeker?",
+                    Text: "Are you sure?",
                     Data: {
                         style: "margin-top: 3vh; margin-bottom: 4vh; text-align: center; font-size: 1.5vh;"
                     },
@@ -91,7 +91,7 @@
 <AppWrapper>
 
     <TextField
-        Title="Zoeken"
+        Title="Search"
         Icon="search"
         SubSet={FilterDebts}
         class="phone-misc-input"
@@ -102,10 +102,10 @@
             <Paper
                 Icon={Data.AssetType == 'Vehicle' ? "car" : ""}
                 Title={FormatCurrency.format(Data.Data.Due)}
-                Description={Data.AssetType == "Vehicle" ? "Voertuigen" : Data.Data.Name}
+                Description={Data.AssetType == "Vehicle" ? "Vehicles" : Data.Data.Name}
                 HasDrawer={true}
             >
-                <div class="phone-card-drawer-item" data-tooltip="Vervaldatum" data-position="left">
+                <div class="phone-card-drawer-item" data-tooltip="Expiration date" data-position="left">
                     <i class="fas fa-calendar" />
                     <p>{GetTimeLabel(Data.DueAt)}</p>
                 </div>
@@ -115,7 +115,7 @@
                         on:click={() => {
                             PayDebt(Data);
                         }}
-                        Color="success">Betalen</Button
+                        Color="success">Pay</Button
                     >
                 </div>
             </Paper>
@@ -123,7 +123,7 @@
 
         {#if FilteredDebts.length > 5 && ShowingLimit < FilteredDebts.length}
             <div style="display: flex; justify-content: center; width: 100%;">
-                <Button Color="success" on:click={LoadMore}>Laad Meer</Button>
+                <Button Color="success" on:click={LoadMore}>Load more</Button>
             </div>
         {/if}
     </PaperList>

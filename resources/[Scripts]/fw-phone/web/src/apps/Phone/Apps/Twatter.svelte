@@ -142,7 +142,7 @@
     </div>
 
     <TextField
-        Title="Zoeken"
+        Title="Search"
         Icon="search"
         SubSet={FilterTwats}
         class="phone-misc-input"
@@ -175,7 +175,7 @@
 
         {#if FilteredTwats.length > ShowingLimit}
             <div style="display: flex; justify-content: center; width: 100%;">
-                <Button Color="success" on:click={LoadMore}>Laad Meer</Button>
+                <Button Color="success" on:click={LoadMore}>Load more</Button>
             </div>
         {/if}
     </PaperList>
